@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f2942" />
+  <title>ProASN Prep — Statistisi Ahli Pertama BPS</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=5" />
+</head>
+<body>
+  <!-- Top Header -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand" onclick="navigateTo('home')" role="button" tabindex="0">
+        <div class="brand-badge">PA</div>
+        <div class="brand-text">
+          <span class="brand-title">ProASN Prep</span>
+          <span class="brand-sub">Statistisi Ahli Pertama</span>
+        </div>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Navigasi Utama">
+        <button class="nav-btn active" data-tab="home" onclick="navigateTo('home')">Beranda</button>
+        <button class="nav-btn" data-tab="materials" onclick="navigateTo('materials')">Materi</button>
+        <button class="nav-btn" data-tab="practice" onclick="navigateTo('practice')">Bank Soal</button>
+        <button class="nav-btn" data-tab="tryout" onclick="navigateTo('tryout')">Simulasi CAT</button>
+        <button class="nav-btn" data-tab="tips" onclick="navigateTo('tips')">Tips & Hari-H</button>
+      </nav>
+
+      <div class="topbar-actions">
+        <button id="themeToggle" class="icon-btn" title="Ganti Mode Gelap/Terang" aria-label="Ganti Tema">
+          <span id="themeIcon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-container">
+    <!-- TAB 1: BERANDA -->
+    <section id="tab-home" class="tab-section active">
+      <div class="hero-card">
+        <div class="hero-pill">🎯 Target: Profiling ASN (ProASN) BKN 2026</div>
+        <h1>Siap Maksimal Hadapi ProASN<br /><span class="accent-text">Statistisi Ahli Pertama</span></h1>
+        <p class="hero-desc">
+          Platform belajar mandiri terkurasi untuk Pejabat Fungsional jenjang Ahli Pertama BPS.
+          Dilengkapi materi lengkap & rangkuman, <strong>500 soal terkurasi (10 Paket @ 50 soal)</strong> bertingkat dari Paling Relevan hingga Arsip Lama, simulasi CAT, dan strategi Hari-H.
+        </p>
+
+        <div class="countdown-box" id="countdownBox">
+          <div class="countdown-meta">
+            <span class="countdown-label">📅 Rabu, 9 Desember 2026</span>
+            <span class="countdown-loc">📍 Kanreg VI BKN Medan</span>
+          </div>
+          <div class="countdown-grid" id="countdownTimer">
+            <div class="cd-item"><strong id="cd-days">--</strong><span>Hari</span></div>
+            <div class="cd-item"><strong id="cd-hours">--</strong><span>Jam</span></div>
+            <div class="cd-item"><strong id="cd-mins">--</strong><span>Menit</span></div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="navigateTo('practice')">Mulai Latihan Soal</button>
+          <button class="btn btn-secondary" onclick="navigateTo('tryout')">Simulasi CAT</button>
+          <button class="btn btn-ghost" onclick="navigateTo('materials')">Baca Materi</button>
+        </div>
+      </div>
+
+      <!-- Progress Overview -->
+      <div class="section-header">
+        <h2>Progres Belajar Kamu</h2>
+        <button class="text-btn" onclick="resetProgress()">Reset Progres</button>
+      </div>
+
+      <div class="stats-grid" id="homeStatsGrid">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Analisis Kesiapan Per Aspek -->
+      <div class="info-card" style="margin-bottom:24px;">
+        <div class="section-header" style="margin-bottom:10px;">
+          <h3 style="font-size:17px; font-weight:800;">📊 Analisis Kesiapan per Aspek</h3>
+          <button class="btn btn-primary btn-sm" id="weakestBtn" onclick="practiceWeakest()">Latih Aspek Terlemah</button>
+        </div>
+        <div id="aspectAnalysisList" class="aspect-list">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Riwayat Simulasi CAT -->
+      <div class="info-card" id="historyCard" style="margin-bottom:24px;">
+        <div class="info-card-header" style="margin-bottom:10px;">
+          <span class="badge-blue">Riwayat Tryout</span>
+          <h3>Perkembangan Skor Simulasi CAT</h3>
+        </div>
+        <div id="catHistoryList" class="history-list">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Info Undangan Ringkas -->
+      <div class="info-card">
+        <div class="info-card-header">
+          <span class="badge-orange">Info Undangan BPS Sumut</span>
+          <h3>Ringkasan Jadwal & Ketentuan</h3>
+        </div>
+        <div class="info-list">
+          <div class="info-item">
+            <span class="info-icon">🕒</span>
+            <div>
+              <strong>3 Sesi Ujian (Durasi 3 Jam / Sesi)</strong>
+              <p>Sesi 1: 08.00–11.00 | Sesi 2: 11.00–14.00 | Sesi 3: 14.00–17.00 WIB. Wajib hadir <strong>30 menit sebelum ujian</strong>.</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">👕</span>
+            <div>
+              <strong>Dresscode Resmi</strong>
+              <p>Baju Sensus Ekonomi (SE) berwarna <strong>oranye</strong>, celana/rok hitam, jilbab hitam (bagi yang mengenakan), dan sepatu.</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📋</span>
+            <div>
+              <strong>Fokus Penilaian ProASN</strong>
+              <p>Manajerial & Sosial Kultural (Level 2), Potensi/Psikologi, Literasi Digital, dan Preferensi Karier untuk Manajemen Talenta.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: MATERI -->
+    <section id="tab-materials" class="tab-section">
+      <div class="page-head">
+        <h2>Materi Lengkap ProASN</h2>
+        <p>Pilih <strong>Versi Lengkap</strong> (konsep + contoh BPS & sekitar + Do/Don't) atau <strong>Versi Rangkuman</strong> untuk review cepat.</p>
+      </div>
+
+      <div class="segmented-control" id="materialModeToggle">
+        <button class="seg-btn active" data-mode="full" onclick="setMaterialMode('full')">📖 Versi Lengkap</button>
+        <button class="seg-btn" data-mode="summary" onclick="setMaterialMode('summary')">⚡ Versi Rangkuman</button>
+        <button class="seg-btn" data-mode="flashcard" onclick="setMaterialMode('flashcard')">🧠 Flashcard Cepat</button>
+      </div>
+
+      <div id="materialStandardView">
+        <div class="pill-filter" id="materialFilter">
+          <!-- Rendered by JS -->
+        </div>
+
+        <div id="materialsContainer" class="materials-list">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <div id="flashcardView" class="hidden">
+        <div class="flashcard-shell">
+          <div class="flashcard-meta">
+            <span class="badge-orange" id="fcCounter">Kartu 1 / 12</span>
+            <span class="muted">Ketuk kartu untuk membalik</span>
+          </div>
+          <div class="flashcard" id="flashcardBox" onclick="flipFlashcard()">
+            <div class="fc-label" id="fcLabel">PERTANYAAN / KONSEP</div>
+            <div class="fc-text" id="fcText"></div>
+          </div>
+          <div class="flashcard-actions">
+            <button class="btn btn-ghost" onclick="prevFlashcard()">← Sebelumnya</button>
+            <button class="btn btn-secondary" onclick="flipFlashcard()">🔄 Balik Kartu</button>
+            <button class="btn btn-primary" onclick="nextFlashcard()">Berikutnya →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: BANK SOAL -->
+    <section id="tab-practice" class="tab-section">
+      <div class="page-head">
+        <h2>Bank Soal & Pembahasan (600 Soal • 2 Versi)</h2>
+        <p>Pilih <strong>Versi BKN General</strong> (rekomendasi utama untuk CAT BKN) atau <strong>Versi Khusus BPS</strong> (konteks Statistisi).</p>
+      </div>
+
+      <div class="segmented-control" id="practiceScopeToggle">
+        <button class="seg-btn active" data-scope="bkn" onclick="setPracticeScope('bkn')">🏛️ BKN General (ASN Umum)</button>
+        <button class="seg-btn" data-scope="bps" onclick="setPracticeScope('bps')">📊 Khusus BPS (Statistisi)</button>
+        <button class="seg-btn" data-scope="all" onclick="setPracticeScope('all')">🔀 Semua (600 Soal)</button>
+      </div>
+
+      <div class="segmented-control" id="practiceModeToggle">
+        <button class="seg-btn active" data-pmode="study" onclick="setPracticeMode('study')">📖 Mode Belajar (Langsung Bahas)</button>
+        <button class="seg-btn" data-pmode="exam" onclick="setPracticeMode('exam')">🎯 Mode Ujian (Koreksi di Akhir)</button>
+      </div>
+
+      <div class="practice-controls">
+        <div class="search-box">
+          <input type="search" id="practiceSearchInput" placeholder="🔍 Cari soal (misal: phishing, mitra, silogisme, KBLI, AI, TTE)..." oninput="renderPracticeList()" />
+        </div>
+        <div class="pill-filter" id="practicePackFilter">
+          <!-- Rendered by JS -->
+        </div>
+        <div class="pill-filter" id="practiceCategoryFilter">
+          <!-- Rendered by JS -->
+        </div>
+        <div class="practice-subfilters">
+          <label class="toggle-chip">
+            <input type="checkbox" id="onlyBookmarkCheck" onchange="renderPracticeList()" />
+            <span>⭐ Hanya Bookmark</span>
+          </label>
+          <label class="toggle-chip">
+            <input type="checkbox" id="onlyUnansweredCheck" onchange="renderPracticeList()" />
+            <span>📝 Belum Dijawab</span>
+          </label>
+        </div>
+      </div>
+
+      <div id="examModeBar" class="exam-mode-bar hidden">
+        <div id="examModeStatus" class="exam-status-text">Mode Ujian Aktif — Pembahasan disembunyikan sementara</div>
+        <div class="exam-bar-actions">
+          <button class="btn btn-primary btn-sm" id="gradeExamBtn" onclick="gradePracticeExam()">✓ Koreksi & Lihat Nilai</button>
+          <button class="btn btn-ghost btn-sm" onclick="resetPracticeExam()">↻ Ulangi</button>
+        </div>
+      </div>
+
+      <div id="examScoreBanner" class="hidden"></div>
+
+      <div class="practice-summary" id="practiceSummary"></div>
+      <div id="practiceContainer" class="questions-stack">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- TAB 4: SIMULASI CAT -->
+    <section id="tab-tryout" class="tab-section">
+      <!-- Lobby -->
+      <div id="tryoutLobby" class="tryout-lobby">
+        <div class="page-head">
+          <h2>Simulasi CAT ProASN</h2>
+          <p>Uji kecepatan dan ketepatanmu dengan tampilan menyerupai sistem CAT BKN.</p>
+        </div>
+
+        <div class="tryout-options-grid">
+          <div class="tryout-card">
+            <span class="badge-blue">Cepat • 15 Menit</span>
+            <h3>Mini Tryout Acak</h3>
+            <p>15 soal acak gabungan dari seluruh 100 bank soal. Cocok untuk latihan singkat di HP saat istirahat.</p>
+            <button class="btn btn-primary full-width" onclick="startTryout(15, 15)">Mulai Mini Tryout</button>
+          </div>
+          <div class="tryout-card featured">
+            <span class="badge-orange">Rekomendasi • 35 Menit</span>
+            <h3>Tryout Standar ProASN</h3>
+            <p>30 soal acak proporsional (Mansoskul, Potensi, Literasi Digital, Preferensi Karier) lengkap dengan rapor analisis.</p>
+            <button class="btn btn-primary full-width" onclick="startTryout(30, 35)">Mulai Tryout Standar</button>
+          </div>
+          <div class="tryout-card">
+            <span class="badge-green">Maraton • 90 Menit</span>
+            <h3>Full Bank Soal (100 Soal)</h3>
+            <p>Kerjakan seluruh 100 soal terkurasi dalam satu sesi untuk melatih stamina membaca dan fokus seperti CAT 3 jam.</p>
+            <button class="btn btn-secondary full-width" onclick="startTryout(100, 90)">Mulai Full Tryout</button>
+          </div>
+        </div>
+
+        <div class="section-header" style="margin-top:24px;">
+          <h2>Simulasi Per Paket (@ 50 Soal • 55 Menit)</h2>
+        </div>
+
+        <div class="segmented-control" id="catScopeToggle">
+          <button class="seg-btn active" data-cscope="bkn" onclick="setCatScope('bkn')">🏛️ BKN General (10 Paket • 500 Soal)</button>
+          <button class="seg-btn" data-cscope="bps" onclick="setCatScope('bps')">📊 Khusus BPS (2 Paket • 100 Soal)</button>
+        </div>
+
+        <div class="tryout-options-grid" id="catPackCards">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <!-- Active Exam -->
+      <div id="tryoutActive" class="tryout-active hidden">
+        <div class="cat-topbar">
+          <div class="cat-progress-text" id="catProgressText">Soal 1 / 30</div>
+          <div class="cat-timer" id="catTimer">35:00</div>
+          <button class="btn btn-danger-outline btn-sm" onclick="finishTryoutConfirm()">Selesai</button>
+        </div>
+
+        <div class="cat-layout">
+          <div class="cat-question-area">
+            <div class="q-meta-row" id="catMetaRow"></div>
+            <div class="q-text" id="catQuestionText"></div>
+            <div class="options-list" id="catOptionsList"></div>
+
+            <div class="cat-nav-actions">
+              <button class="btn btn-ghost" id="catPrevBtn" onclick="catPrev()">← Sebelumnya</button>
+              <button class="btn btn-warning-outline" id="catFlagBtn" onclick="catToggleFlag()">🚩 Ragu-ragu</button>
+              <button class="btn btn-primary" id="catNextBtn" onclick="catNext()">Selanjutnya →</button>
+            </div>
+          </div>
+
+          <aside class="cat-sidebar">
+            <h4>Navigasi Nomor</h4>
+            <div class="cat-legend">
+              <span><i class="dot answered"></i> Dijawab</span>
+              <span><i class="dot flagged"></i> Ragu</span>
+              <span><i class="dot empty"></i> Belum</span>
+            </div>
+            <div class="cat-num-grid" id="catNumGrid"></div>
+          </aside>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div id="tryoutResult" class="tryout-result hidden">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- TAB 5: TIPS & HARI-H -->
+    <section id="tab-tips" class="tab-section">
+      <div class="page-head">
+        <h2>Tips, Strategi & Checklist Hari-H</h2>
+        <p>Panduan praktis agar hasil Profiling ASN kamu berada di kuadran terbaik (Talent Pool Optimal).</p>
+      </div>
+
+      <div id="tipsContainer" class="tips-grid">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="checklist-card">
+        <h3>✅ Checklist Persiapan Hari-H (9 Des 2026)</h3>
+        <p class="muted">Centang item yang sudah kamu siapkan (tersimpan otomatis di perangkatmu).</p>
+        <div id="checklistContainer" class="checklist-items">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav" aria-label="Navigasi Mobile">
+    <button class="m-nav-btn active" data-tab="home" onclick="navigateTo('home')">
+      <span class="m-icon">🏠</span>
+      <span>Beranda</span>
+    </button>
+    <button class="m-nav-btn" data-tab="materials" onclick="navigateTo('materials')">
+      <span class="m-icon">📚</span>
+      <span>Materi</span>
+    </button>
+    <button class="m-nav-btn" data-tab="practice" onclick="navigateTo('practice')">
+      <span class="m-icon">✍️</span>
+      <span>Soal</span>
+    </button>
+    <button class="m-nav-btn" data-tab="tryout" onclick="navigateTo('tryout')">
+      <span class="m-icon">⏱️</span>
+      <span>CAT</span>
+    </button>
+    <button class="m-nav-btn" data-tab="tips" onclick="navigateTo('tips')">
+      <span class="m-icon">💡</span>
+      <span>Tips</span>
+    </button>
+  </nav>
+
+  <script src="data/materials.js"></script>
+  <script src="data/questions.js"></script>
+  <script src="data/questions_extra.js"></script>
+  <script src="data/questions_packs.js"></script>
+  <script src="data/questions_bkn_general.js"></script>
+  <script src="data/tips.js"></script>
+  <script src="app.js?v=5"></script>
+</body>
+</html>
