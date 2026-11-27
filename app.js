@@ -749,9 +749,9 @@ function startPackTryout(packNum, customLabel) {
 }
 
 function startTryout(count, minutes) {
-  // Gunakan 100% soal BKN General / ASN Umum (tanpa soal khusus BPS)
-  const bknOnly = (window.PROASN_QUESTIONS || []).filter(q => q.scope === "bkn");
-  const pool = shuffle(bknOnly).slice(0, Math.min(count, bknOnly.length));
+  // Gunakan 100% soal murni BKN General / ASN Umum (ID >= 501, bebas istilah khusus BPS)
+  const pureBkn = (window.PROASN_QUESTIONS || []).filter(q => q.scope === "bkn" && q.id >= 501 && !q.isPreference);
+  const pool = shuffle(pureBkn).slice(0, Math.min(count, pureBkn.length));
   const label = count <= 15 ? "Mini Tryout BKN General (15 Soal)" : count <= 30 ? "Tryout Standar BKN (30 Soal)" : `Full Tryout BKN (${pool.length} Soal)`;
   catSession = {
     is5Stage: false,
@@ -774,15 +774,23 @@ function startTryout(count, minutes) {
 // ==================== SIMULASI RESMI 5-TAHAP PROASN 2026 (100% BKN GENERAL + AUTO-NEXT TIMER) ====================
 function startOfficial5Stage(mode) {
   const isExact = mode === "exact531";
-  // Strictly use BKN General / ASN Umum questions (exclude BPS-specific items)
-  const bknOnly = (window.PROASN_QUESTIONS || []).filter(q => q.scope === "bkn");
+  // Strictly use pure BKN General / ASN Umum questions (ID >= 501, zero BPS-specific terms)
+  const pureBkn = (window.PROASN_QUESTIONS || []).filter(q => q.scope === "bkn" && q.id >= 501);
+  const fallbackBkn = (window.PROASN_QUESTIONS || []).filter(q => q.scope === "bkn");
 
   const potensiPool = isExact
     ? (window.PROASN_OFFICIAL_POTENSI_270 || []).slice()
-    : shuffle(window.PROASN_OFFICIAL_POTENSI_270 || bknOnly.filter(q => q.category === "01. Potensi")).slice(0, 30);
+    : shuffle(window.PROASN_OFFICIAL_POTENSI_270 || pureBkn.filter(q => q.category === "01. Potensi")).slice(0, 30);
 
-  const mansoskulPool = shuffle(bknOnly.filter(q => q.category === "02. Mansoskul")).slice(0, isExact ? 45 : 25);
-  const digitalPool = shuffle(bknOnly.filter(q => q.category === "03. Literasi Digital")).slice(0, isExact ? 48 : 20);
+  const mansoskulPure = shuffle(pureBkn.filter(q => q.category === "02. Mansoskul"));
+  const mansoskulPool = mansoskulPure.length >= (isExact ? 45 : 25)
+    ? mansoskulPure.slice(0, isExact ? 45 : 25)
+    : [...mansoskulPure, ...shuffle(fallbackBkn.filter(q => q.category === "02. Mansoskul" && q.id < 501))].slice(0, isExact ? 45 : 25);
+
+  const digitalPure = shuffle(pureBkn.filter(q => q.category === "03. Literasi Digital"));
+  const digitalPool = digitalPure.length >= (isExact ? 48 : 20)
+    ? digitalPure.slice(0, isExact ? 48 : 20)
+    : [...digitalPure, ...shuffle(fallbackBkn.filter(q => q.category === "03. Literasi Digital" && q.id < 501))].slice(0, isExact ? 48 : 20);
 
   const likertOpts = ["A. Sangat Sesuai", "B. Sesuai", "C. Kurang Sesuai", "D. Tidak Sesuai"];
   const riasecPool = isExact
