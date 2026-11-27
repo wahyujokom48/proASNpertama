@@ -749,8 +749,10 @@ function startPackTryout(packNum, customLabel) {
 }
 
 function startTryout(count, minutes) {
-  const pool = shuffle(window.PROASN_QUESTIONS).slice(0, Math.min(count, window.PROASN_QUESTIONS.length));
-  const label = count <= 15 ? "Mini Tryout (15 Soal)" : count <= 30 ? "Tryout Standar (30 Soal)" : `Full Tryout (${pool.length} Soal)`;
+  // Gunakan 100% soal BKN General / ASN Umum (tanpa soal khusus BPS)
+  const bknOnly = (window.PROASN_QUESTIONS || []).filter(q => q.scope === "bkn");
+  const pool = shuffle(bknOnly).slice(0, Math.min(count, bknOnly.length));
+  const label = count <= 15 ? "Mini Tryout BKN General (15 Soal)" : count <= 30 ? "Tryout Standar BKN (30 Soal)" : `Full Tryout BKN (${pool.length} Soal)`;
   catSession = {
     is5Stage: false,
     label,
@@ -769,17 +771,18 @@ function startTryout(count, minutes) {
   startCatTimer();
 }
 
-// ==================== SIMULASI RESMI 5-TAHAP PROASN 2026 (AUTO-NEXT TIMER) ====================
+// ==================== SIMULASI RESMI 5-TAHAP PROASN 2026 (100% BKN GENERAL + AUTO-NEXT TIMER) ====================
 function startOfficial5Stage(mode) {
   const isExact = mode === "exact531";
-  const all = window.PROASN_QUESTIONS || [];
+  // Strictly use BKN General / ASN Umum questions (exclude BPS-specific items)
+  const bknOnly = (window.PROASN_QUESTIONS || []).filter(q => q.scope === "bkn");
 
   const potensiPool = isExact
     ? (window.PROASN_OFFICIAL_POTENSI_270 || []).slice()
-    : shuffle(window.PROASN_OFFICIAL_POTENSI_270 || all.filter(q => q.category === "01. Potensi")).slice(0, 30);
+    : shuffle(window.PROASN_OFFICIAL_POTENSI_270 || bknOnly.filter(q => q.category === "01. Potensi")).slice(0, 30);
 
-  const mansoskulPool = shuffle(all.filter(q => q.category === "02. Mansoskul")).slice(0, isExact ? 45 : 25);
-  const digitalPool = shuffle(all.filter(q => q.category === "03. Literasi Digital")).slice(0, isExact ? 48 : 20);
+  const mansoskulPool = shuffle(bknOnly.filter(q => q.category === "02. Mansoskul")).slice(0, isExact ? 45 : 25);
+  const digitalPool = shuffle(bknOnly.filter(q => q.category === "03. Literasi Digital")).slice(0, isExact ? 48 : 20);
 
   const likertOpts = ["A. Sangat Sesuai", "B. Sesuai", "C. Kurang Sesuai", "D. Tidak Sesuai"];
   const riasecPool = isExact
