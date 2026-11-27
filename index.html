@@ -44,11 +44,10 @@
     <!-- TAB 1: BERANDA -->
     <section id="tab-home" class="tab-section active">
       <div class="hero-card">
-        <div class="hero-pill">🎯 Target: Profiling ASN (ProASN) BKN 2026</div>
-        <h1>Siap Maksimal Hadapi ProASN<br /><span class="accent-text">Statistisi Ahli Pertama</span></h1>
+        <div class="hero-pill">🎯 Resmi Sesuai SE Kepala BKN No. 6/2026 • 531 Soal • 5 Aspek</div>
+        <h1>Siap Optimal (JPM ≥ 90%)<br /><span class="accent-text">ProASN 2026 — Ahli Pertama</span></h1>
         <p class="hero-desc">
-          Platform belajar mandiri terkurasi untuk Pejabat Fungsional jenjang Ahli Pertama BPS.
-          Dilengkapi materi lengkap & rangkuman, <strong>500 soal terkurasi (10 Paket @ 50 soal)</strong> bertingkat dari Paling Relevan hingga Arsip Lama, simulasi CAT, dan strategi Hari-H.
+          Disesuaikan penuh dengan <strong>Panduan Resmi ProASN BKN 2026</strong>: Potensi (270 soal/56 mnt), Mansoskul (45 soal/39 mnt), Literasi Digital Komdigi (48 soal/24 mnt), Tripatha Karier RIASEC (168 soal/18 mnt), dan Talent DNA ESQ (90 soal/15 mnt).
         </p>
 
         <div class="countdown-box" id="countdownBox">
@@ -126,8 +125,8 @@
           <div class="info-item">
             <span class="info-icon">📋</span>
             <div>
-              <strong>Fokus Penilaian ProASN</strong>
-              <p>Manajerial & Sosial Kultural (Level 2), Potensi/Psikologi, Literasi Digital, dan Preferensi Karier untuk Manajemen Talenta.</p>
+              <strong>5 Aspek Resmi (Total 531 Soal • ±2,5 Jam) & Ambang JPM</strong>
+              <p>Potensi (270) • Mansoskul (45) • Literasi Digital (48) • Tripatha RIASEC (168) • Talent DNA ESQ (90). Target <strong>Optimal: JPM ≥ 90%</strong> | Cukup Optimal: 78–&lt;90% | Kurang Optimal: &lt;78%.</p>
             </div>
           </div>
         </div>
@@ -237,28 +236,28 @@
       <!-- Lobby -->
       <div id="tryoutLobby" class="tryout-lobby">
         <div class="page-head">
-          <h2>Simulasi CAT ProASN</h2>
-          <p>Uji kecepatan dan ketepatanmu dengan tampilan menyerupai sistem CAT BKN.</p>
+          <h2>Simulasi CAT Resmi ProASN 2026</h2>
+          <p>Pilih <strong>Simulasi Resmi 5-Tahap (Auto-Next Timer per Subtes)</strong> persis aturan BKN, atau latihan per paket.</p>
         </div>
 
-        <div class="tryout-options-grid">
-          <div class="tryout-card">
-            <span class="badge-blue">Cepat • 15 Menit</span>
-            <h3>Mini Tryout Acak</h3>
-            <p>15 soal acak gabungan dari seluruh 100 bank soal. Cocok untuk latihan singkat di HP saat istirahat.</p>
-            <button class="btn btn-primary full-width" onclick="startTryout(15, 15)">Mulai Mini Tryout</button>
+        <div class="tryout-options-grid" style="margin-bottom:24px;">
+          <div class="tryout-card featured">
+            <span class="badge-orange">🔥 Paling Mirip Asli • 5 Tahap Auto-Next</span>
+            <h3>Simulasi Resmi 5-Tahap (Proporsional)</h3>
+            <p>123 soal lengkap 5 aspek (Potensi 30/7m → Mansoskul 25/16m → Lit. Digital 20/10m → Tripatha RIASEC 30/3m → Talent DNA 18/3m) + Rapor JPM, RIASEC & Talent DNA!</p>
+            <button class="btn btn-primary full-width" onclick="startOfficial5Stage('proportional')">Mulai Simulasi 5-Tahap (39 Mnt)</button>
           </div>
           <div class="tryout-card featured">
-            <span class="badge-orange">Rekomendasi • 35 Menit</span>
-            <h3>Tryout Standar ProASN</h3>
-            <p>30 soal acak proporsional (Mansoskul, Potensi, Literasi Digital, Preferensi Karier) lengkap dengan rapor analisis.</p>
-            <button class="btn btn-primary full-width" onclick="startTryout(30, 35)">Mulai Tryout Standar</button>
+            <span class="badge-blue">⚡ Jumlah Soal Asli Mansoskul & LitDig</span>
+            <h3>Simulasi Resmi 5-Tahap (Full Realistis)</h3>
+            <p>191 soal dengan porsi <strong>45 soal Mansoskul (39 mnt)</strong> & <strong>48 soal Literasi Digital (24 mnt)</strong> persis panduan BKN + Potensi, RIASEC & Talent DNA!</p>
+            <button class="btn btn-secondary full-width" onclick="startOfficial5Stage('full')">Mulai Simulasi Full 5-Tahap (81 Mnt)</button>
           </div>
           <div class="tryout-card">
-            <span class="badge-green">Maraton • 90 Menit</span>
-            <h3>Full Bank Soal (100 Soal)</h3>
-            <p>Kerjakan seluruh 100 soal terkurasi dalam satu sesi untuk melatih stamina membaca dan fokus seperti CAT 3 jam.</p>
-            <button class="btn btn-secondary full-width" onclick="startTryout(100, 90)">Mulai Full Tryout</button>
+            <span class="badge-green">Cepat • 15 Menit</span>
+            <h3>Mini Tryout Acak (15 Soal)</h3>
+            <p>15 soal acak gabungan untuk latihan singkat di HP saat istirahat.</p>
+            <button class="btn btn-ghost full-width" style="border-color:var(--border);" onclick="startTryout(15, 15)">Mulai Mini Tryout</button>
           </div>
         </div>
 
@@ -365,7 +364,8 @@
   <script src="data/questions_extra.js"></script>
   <script src="data/questions_packs.js"></script>
   <script src="data/questions_bkn_general.js"></script>
+  <script src="data/questions_riasec_dna.js"></script>
   <script src="data/tips.js"></script>
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=6"></script>
 </body>
 </html>

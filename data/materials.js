@@ -1,248 +1,255 @@
 window.PROASN_MATERIALS = [
   {
     id: "mod-1",
-    category: "Dasar ProASN",
-    badge: "Modul 1 • Pengantar",
-    title: "Mengenal Profiling ASN (ProASN) BKN & Manajemen Talenta",
-    summary: "Memahami filosofi ProASN sesuai SE Kepala BKN No. 6 Tahun 2026, pemetaan 9-Box Talent Pool, struktur 4 subtes, dan dampaknya bagi karier Statistisi Ahli Pertama.",
+    category: "Panduan Resmi 2026",
+    badge: "Modul 1 • SE BKN No. 6/2026",
+    title: "Cakupan Resmi ProASN 2026: 531 Soal, 5 Aspek & Sistem Penilaian JPM",
+    summary: "Berdasarkan SE Kepala BKN No. 6 Tahun 2026 & Panduan Peserta ProASN 2026: rincian 5 aspek (531 soal), timer per subtes, dan ambang batas JPM Optimal ≥90%.",
     quickSummary: [
-      "ProASN = pemetaan objektif berbasis CAT BKN untuk Manajemen Talenta (9-Box Talent Pool), bukan tes gugur.",
-      "4 Subtes utama (±3 jam / 180 menit): Mansoskul (SJT Level 2), Potensi (Logika/Analitis/EQ), Literasi Digital (Basic & Advance), dan Preferensi Karier (Tripatha).",
-      "Target Statistisi Ahli Pertama: konsisten menunjukkan perilaku Level 2 (aktif, kolaboratif, solutif, berintegritas) dan potensi kognitif yang tajam agar masuk Kotak Talenta 7–9."
+      "Total Resmi: 531 soal dalam 152 menit (~2,5 jam) dari alokasi sesi 180 menit. Wajib selesaikan SELURUH rangkaian tes agar laporan terbit!",
+      "5 Aspek: (1) Potensi: 5 subtes, 270 soal, 56 mnt | (2) Mansoskul: 2 subtes, 45 soal, 39 mnt | (3) Literasi Digital: 4 subtes, 48 soal, 24 mnt | (4) Tripatha Karier (RIASEC): 4 subtes, 168 soal, 18 mnt | (5) Talent DNA (ESQ): 1 subtes, 90 soal, 15 mnt.",
+      "Sistem CAT: Setiap subtes punya batas waktu sendiri! Waktu habis = OTOMATIS pindah ke subtes berikutnya & soal kosong bernilai 0.",
+      "Kategori JPM (PerBKN No. 26/2019): Optimal (≥90%), Cukup Optimal (78% – <90%), Kurang Optimal (<78%). Hasil berlaku 3 tahun & masuk MyASN."
     ],
     fullContent: [
       {
-        heading: "1. Apa Itu Profiling ASN (ProASN) dan Mengapa Penting?",
+        heading: "1. Rincian Resmi 5 Aspek & 531 Soal ProASN 2026",
         paragraphs: [
-          "Profiling Aparatur Sipil Negara (ProASN) yang diselenggarakan Badan Kepegawaian Negara (BKN) berdasarkan Surat Edaran Kepala BKN Nomor 6 Tahun 2026 merupakan instrumen pemetaan potensi, kompetensi, kecakapan digital, dan preferensi karier ASN secara massal menggunakan sistem Computer Assisted Test (CAT/CACT BKN).",
-          "Berbeda dengan ujian seleksi CPNS yang bersifat gugur, ProASN bertujuan membangun potret objektif setiap ASN untuk mendukung Manajemen Talenta Nasional dan sistem merit. Hasil ProASN dipadukan dengan rekam jejak kinerja (SKP/e-Kinerja) untuk memetakan pegawai ke dalam 9-Box Talent Pool. Pegawai yang berada di kuadran atas (Kotak 7, 8, atau 9) menjadi prioritas untuk promosi jenjang jabatan, penugasan strategis, pengembangan kompetensi/tugas belajar, dan rencana suksesi."
+          "Sesuai Surat Edaran Kepala BKN Nomor 6 Tahun 2026 (1 Juli 2026) dan Panduan Peserta ProASN 2026, pengukuran menggunakan metode Non-Assessment Center yang mengukur kompetensi pada jabatan yang sedang diduduki saat ini (bukan jabatan target). Hasilnya terintegrasi langsung ke SIASN/MyASN dan berlaku selama 3 tahun."
+        ],
+        points: [
+          "01. Potensi — 5 subtes, 270 soal, 56 menit (~12 detik/soal). Acuan: PermenPANRB No. 3/2020. Output: Rendah / Menengah / Tinggi.",
+          "02. Kompetensi Manajerial & Sosial Kultural — 2 subtes, 45 soal, 39 menit (~52 detik/soal). Acuan: PermenPANRB No. 38/2017 (Level 2 untuk Ahli Pertama). Output: Kurang Optimal / Cukup Optimal / Optimal.",
+          "03. Literasi Digital — 4 subtes, 48 soal, 24 menit (30 detik/soal). Acuan: 4 Pilar Literasi Digital Kementerian Komdigi. Output: Kurang Optimal / Cukup Optimal / Optimal.",
+          "04. Tripatha Karier — 4 subtes, 168 soal, 18 menit (~6,4 detik/soal). Acuan: Teori Holland (RIASEC). Output: Tipe R / I / A / S / E / C.",
+          "05. Talent DNA — 1 subtes, 90 soal, 15 menit (10 detik/soal). Acuan: TalentDNA dari ESQ. Output: Profil 45 Talenta alami."
         ]
       },
       {
-        heading: "2. Struktur 4 Aspek Uji dalam ProASN BKN",
+        heading: "2. Sistem Timer Per Subtes & Penilaian JPM (Job Person Match)",
         paragraphs: [
-          "Dalam durasi sekitar 3 jam (180 menit), peserta menghadapi empat kelompok instrumen utama yang saling melengkapi:"
-        ],
-        points: [
-          "Kompetensi Manajerial & Sosial Kultural (Mansoskul): Menggunakan metode Situational Judgment Test (SJT) yang menguji respons terhadap skenario kerja nyata berdasarkan PermenPANRB No. 38 Tahun 2017. Untuk jenjang Ahli Pertama, standar kompetensinya adalah Level 2.",
-          "Aspek Potensi (Kognitif & Psikologi): Mengukur daya nalar logis (silogisme), penalaran analitis, ketelitian numerik, pemecahan masalah (problem solving), kecerdasan emosional (EQ), dan ketahanan terhadap tekanan kerja.",
-          "Literasi Digital: Mengukur kesiapan menuju Smart ASN — mulai dari keamanan siber dasar (phishing, MFA, etika media sosial) hingga literasi lanjutan (Big Data, AI, Cloud Computing, dan UU Pelindungan Data Pribadi).",
-          "Preferensi Karier (Tripatha Karier & Talent DNA): Memetakan kecenderungan minat jalur karier (Fungsional Spesialis, Struktural/Manajerial, atau Proyek Strategis) serta faktor motivasi kerja."
+          "Hal terpenting dari FAQ Resmi BKN: setiap subtes memiliki timer masing-masing di layar. Jika waktu habis, sistem otomatis melompat ke subtes berikutnya dan soal yang belum diisi bernilai 0. Setelah selesai seluruh rangkaian, hasil langsung tampil di layar komputer!",
+          "JPM (Job Person Match) adalah persentase kesesuaian capaian kompetensimu dengan standar kompetensi jabatan saat ini: Optimal (JPM ≥ 90%), Cukup Optimal (78% ≤ JPM < 90%), dan Kurang Optimal (JPM < 78%)."
         ]
       }
     ],
     bpsExamples: [
-      "Di lingkungan BPS, hasil ProASN yang kuat di aspek Potensi Analitis dan Mansoskul Level 2 menjadi modal penting untuk kenaikan jenjang dari Statistisi Ahli Pertama ke Statistisi Ahli Muda serta penunjukan sebagai anggota tim inti kegiatan besar seperti Sensus Ekonomi 2026.",
-      "Sebagai Pejabat Fungsional yang bekerja dalam sistem Tim Kerja (Squad), profil yang menunjukkan ketajaman teknis statistik sekaligus kemampuan kolaborasi lintas fungsi (misal dengan Pranata Komputer) sangat bernilai."
+      "Sebagai Statistisi Ahli Pertama BPS, target utamamu adalah meraih JPM ≥ 90% (Optimal) pada Mansoskul Level 2 dan Literasi Digital, serta kategori Tinggi pada Potensi.",
+      "Hasil ProASN berlaku 3 tahun di MyASN dan menjadi bahan utama Manajemen Talenta BPS (promosi ke Ahli Muda, penugasan tim strategis, dan pengembangan kompetensi)."
     ],
     aroundExamples: [
-      "Di kehidupan kerja ASN sehari-hari, Manajemen Talenta membuat mutasi atau promosi tidak lagi berdasarkan kedekatan personal, melainkan data objektif dari rapor ProASN dan capaian kinerja.",
-      "Ibarat medical check-up karier: jika rapor ProASN mendeteksi ada aspek yang masih di bawah standar (gap), instansi akan mengarahkan pelatihan/diklat yang tepat sasaran untuk menutup gap tersebut."
+      "Perhatikan ritme waktu: di Potensi (270 soal / 56 menit), Tripatha (168 soal / 18 menit), dan Talent DNA (90 soal / 15 menit), kamu HARUS menjawab cepat dan spontan—jangan merenung terlalu lama di satu nomor!"
     ],
     doDont: {
-      do: "Pahami peranmu sebagai Ahli Pertama (Level 2), jaga stamina fokus selama 3 jam, dan jawab secara konsisten.",
-      dont: "Jangan menganggap remeh karena 'bukan tes gugur'—hasil ProASN tercatat permanen di profil talenta kepegawaian BKN."
+      do: "Selesaikan SEMUA 5 aspek hingga tuntas dan isi kuesioner evaluasi di akhir agar laporan hasilmu terbit di SIASN.",
+      dont: "Jangan membiarkan soal kosong saat timer subtes hampir habis (jawaban kosong = 0), dan jangan berhenti di tengah rangkaian tes."
     }
   },
   {
     id: "mod-2",
-    category: "Mansoskul Level 2",
-    badge: "Modul 2 • Inti SJT",
-    title: "8 Kompetensi Manajerial & 1 Sosial Kultural (Standar Level 2)",
-    summary: "Panduan mendalam PermenPANRB No. 38 Tahun 2017 untuk jenjang Ahli Pertama (Level 2) lengkap dengan perbandingan perilaku dan contoh kasus BPS.",
+    category: "01. Potensi (270 Soal)",
+    badge: "Modul 2 • 5 Subtes • 56 Menit",
+    title: "Aspek Potensi: Kognitif, Penalaran & Psikologi (270 Soal / 56 Menit)",
+    summary: "Strategi menaklukkan 270 soal Potensi dalam 56 menit (~12 detik/soal): kemampuan belajar, berpikir konseptual, analisis situasi, dan problem solving.",
     quickSummary: [
-      "Level 1 = Pasif/melaksanakan sendiri. Level 2 (Ahli Pertama) = Proaktif, mengingatkan rekan secara persuasif, koordinasi lintas unit, coaching/membimbing, dan mencari cara kerja lebih efektif.",
-      "8 Manajerial: Integritas, Kerja Sama, Komunikasi, Orientasi Hasil, Pelayanan Publik, Pengembangan Diri & Orang Lain, Mengelola Perubahan, Pengambilan Keputusan.",
-      "1 Sosial Kultural: Perekat Bangsa (netral, menghargai keberagaman, mediator konflik yang adil)."
+      "Kecepatan adalah kunci: 270 soal dalam 56 menit berarti rata-rata hanya 12,4 detik per soal! Jangan terpaku di 1 soal hitungan/logika yang rumit.",
+      "Acuan: PermenPANRB No. 3 Tahun 2020 (kapasitas belajar, memahami informasi, berpikir konseptual, menganalisis situasi, problem solving).",
+      "Kategori hasil: Rendah / Menengah / Tinggi."
     ],
     fullContent: [
       {
-        heading: "1. Memahami Batas Kewenangan Level 2 (Kunci Skor Tertinggi SJT)",
+        heading: "1. Karakteristik 5 Subtes Potensi (270 Soal)",
         paragraphs: [
-          "Kesalahan paling umum peserta Ahli Pertama saat mengerjakan soal SJT adalah memilih jawaban yang terlalu pasif (Level 1: 'diam saja menunggu perintah') atau justru melampaui kewenangan (Level 4–5: 'langsung memecat/mengubah kebijakan nasional tanpa koordinasi').",
-          "Pada Level 2, seorang ASN diharapkan sudah mandiri secara teknis, mampu mengingatkan rekan kerja dengan cara persuasif, aktif berkoordinasi dengan atasan dan lintas seksi/fungsi, mampu membimbing rekan/mitra, serta berani mengusulkan perbaikan metode kerja berbasis data."
-        ]
-      },
-      {
-        heading: "2. Rincian 8 Kompetensi Manajerial (Level 2) + 1 Sosial Kultural",
+          "Karena jumlah soalnya mencapai 270 butir dalam 56 menit, sebagian besar subtes Potensi terdiri dari kombinasi soal kognitif cepat (penalaran logis/silogisme, analitis, pola numerik/verbal) serta inventori psikologi perilaku kerja (kecerdasan emosional, ketahanan stres, inisiatif, dan kesadaran diri) yang memang dirancang untuk dijawab cepat dalam 5–15 detik."
+        ],
         points: [
-          "Integritas: Konsisten bertindak sesuai norma/etika, berani menolak gratifikasi/manipulasi data, dan mampu mengingatkan rekan agar tetap jujur.",
-          "Kerja Sama: Menumbuhkan tim yang partisipatif, proaktif membantu rekan lintas tim saat beban kerja menumpuk demi target bersama.",
-          "Komunikasi: Aktif berkomunikasi formal & informal, mampu menyederhanakan data/informasi kompleks agar mudah dipahami audiens awam, serta menjadi pendengar aktif.",
-          "Orientasi pada Hasil: Berupaya melampaui standar minimal, teliti mengecek akurasi, dan mencari metode kerja lebih efisien (misal otomatisasi skrip validasi).",
-          "Pelayanan Publik: Ramah, cepat, transparan sesuai SOP, tidak melempar tanggung jawab (anti-silo), dan proaktif memberi solusi kepada pengguna layanan.",
-          "Pengembangan Diri & Orang Lain: Aktif meningkatkan kompetensi diri sekaligus melakukan coaching, mentoring, dan knowledge sharing kepada rekan atau mitra.",
-          "Mengelola Perubahan: Proaktif beradaptasi pada sistem/aturan baru dan mendampingi rekan yang kesulitan beradaptasi.",
-          "Pengambilan Keputusan: Menganalisis masalah berbasis fakta/data, membandingkan alternatif solusi, dan mengambil keputusan teknis yang terukur.",
-          "Perekat Bangsa (Sosial Kultural): Aktif merawat kebinekaan, menjaga netralitas ASN, dan menjadi penengah objektif saat terjadi gesekan SARA atau konflik tim."
+          "Silogisme & Logika Formal: Patuh 100% pada premis. Kuantor 'Semua + Sebagian' → 'Sebagian'. Modus Tollens: P→Q, ~Q maka ~P.",
+          "Penalaran Analitis & Numerik: Tulis simbol singkat di kertas buram, eliminasi opsi mustahil, dan prioritaskan soal mudah lebih dulu.",
+          "Inventori Psikologi / EQ: Pilih pernyataan yang paling konsisten mencerminkan tenang di bawah tekanan, terbuka pada kritik, fokus solusi, dan berorientasi perbaikan."
         ]
       }
     ],
     bpsExamples: [
-      "Integritas di BPS: Saat melihat rekan mengubah angka anomali survei agar laporan terlihat bagus, Statistisi Level 2 menegur secara pribadi/persuasif dan mengajak konfirmasi ulang ke lapangan—bukan membiarkan atau langsung mempermalukan di grup umum.",
-      "Komunikasi & Pelayanan Publik di BPS: Saat memaparkan angka kemiskinan/inflasi ke Pemda atau melayani mahasiswa di PST, gunakan visualisasi sederhana dan jelaskan SOP permohonan data mikro dengan ramah.",
-      "Pengembangan Orang Lain & Perubahan: Saat ada pembaruan aplikasi CAPI/FASIH atau mitra baru kesulitan kode KBLI, Statistisi Ahli Pertama aktif membuat panduan ringkas dan sesi coaching."
+      "Di BPS, kemampuan analitis & berpikir konseptual terlihat saat mengecek anomali data sebelum rilis BRS atau menyusun alternatif solusi ketika listrik/server bermasalah menjelang deadline."
     ],
     aroundExamples: [
-      "Di kantor sehari-hari: Jika jadwal rapat tim berbenturan dengan waktu ibadah rekan lain, segera usulkan penyesuaian jadwal agar inklusif (Perekat Bangsa).",
-      "Saat menerima dua tugas mendesak bersamaan dari atasan berbeda: analisis mana yang tenggat dan dampaknya lebih mendesak, lalu komunikasikan jadwal penyelesaian secara transparan (Pengambilan Keputusan)."
+      "Dalam tes psikologi cepat (forced-choice / skala sikap), jangan berpikir terlalu rumit mencari 'jebakan'—jawab jujur dan konsisten sesuai pribadi profesional yang tangguh."
     ],
     doDont: {
-      do: "Pilih opsi yang menggabungkan: integritas + inisiatif solutif + koordinasi + kepatuhan pada SOP.",
-      dont: "Hindari opsi yang apatis ('bukan tugas saya'), konfrontatif kasar, melanggar SOP demi menyenangkan orang, atau menyalahkan rekan."
+      do: "Jaga tempo cepat (~10–15 detik/soal) dan pastikan semua nomor terisi sebelum timer subtes habis.",
+      dont: "Jangan menghabiskan 2–3 menit di satu soal analitis sementara puluhan soal mudah di belakang belum terbaca."
     }
   },
   {
     id: "mod-3",
-    category: "Potensi & Penalaran",
-    badge: "Modul 3 • Kognitif & EQ",
-    title: "Tes Potensi: Silogisme, Analitis, Numerik & Kecerdasan Emosional",
-    summary: "Teknik cepat menyelesaikan soal logika formal, pemetaan urutan analitis, hitungan statistika praktis, serta regulasi emosi di bawah tekanan.",
+    category: "02. Mansoskul (45 Soal)",
+    badge: "Modul 3 • 2 Subtes • 39 Menit",
+    title: "Kompetensi Manajerial & Sosial Kultural Level 2 (45 Soal / 39 Menit)",
+    summary: "2 Subtes (Manajerial + Sosial Kultural) beracuan PermenPANRB No. 38/2017. Target JPM ≥ 90% (Optimal) untuk Ahli Pertama (Level 2).",
     quickSummary: [
-      "Silogisme: Tarik kesimpulan MURNI dari premis. 'Semua A=B' + 'Sebagian C=A' → 'Sebagian C=B'. Modus Tollens: P→Q, ~Q maka ~P.",
-      "Analitis: Tulis inisial huruf dan tanda (< / >) di kertas buram; mulai dari syarat yang paling ketat.",
-      "EQ & Problem Solving: Tetap tenang saat dikritik/tertekan, pisahkan kritik kerja dari ego, dan segera cari solusi alternatif."
+      "Alokasi waktu cukup lega: 45 soal dalam 39 menit (~52 detik/soal). Baca skenario SJT dengan cermat!",
+      "Standar Ahli Pertama = Level 2: proaktif mengingatkan rekan secara persuasif, aktif koordinasi lintas unit, coaching/membimbing, dan solutif berbasis SOP/data.",
+      "8 Manajerial (Integritas, Kerja Sama, Komunikasi, Orientasi Hasil, Pelayanan Publik, Pengembangan Diri & Orang Lain, Mengelola Perubahan, Pengambilan Keputusan) + 1 Sosial Kultural (Perekat Bangsa)."
     ],
     fullContent: [
       {
-        heading: "1. Penalaran Logis (Silogisme & Implikasi)",
+        heading: "1. Kunci Meraih JPM ≥ 90% (Optimal) pada SJT Level 2",
         paragraphs: [
-          "Soal silogisme menguji kemampuan berpikir deduktif tanpa bias. Aturan terpenting: jangan pernah memasukkan pengetahuan luar yang tidak tertulis di premis. Perhatikan tiga pola yang paling sering keluar di CAT BKN:"
+          "Berbeda dengan subtes lain yang super cepat, Mansoskul memberi waktu hampir 1 menit per soal (39 menit untuk 45 soal). Artinya, setiap skenario SJT menuntut ketelitian membaca konteks kewenangan jabatan Ahli Pertama (Level 2).",
+          "Hindari jawaban Level 1 (terlalu pasif/diam menunggu perintah) maupun jawaban melampaui kewenangan (langsung memecat/mengubah kebijakan nasional tanpa koordinasi). Pilih opsi yang menggabungkan: Integritas + Inisiatif Solutif + Koordinasi + Kepatuhan SOP."
         ],
         points: [
-          "Kuantor 'Semua' + 'Sebagian': Kesimpulannya PASTI menggunakan kata 'Sebagian/Ada/Beberapa', tidak boleh menjadi 'Semua'.",
-          "Modus Tollens (Jika P maka Q; ternyata tidak Q → kesimpulan: tidak P). Contoh: Jika response rate < 85% maka kunjungan ulang; ternyata tidak kunjungan ulang → artinya response rate minimal 85%.",
-          "Negasi/Ingkaran: Negasi dari 'Semua A adalah B' adalah 'Ada/Sebagian A yang bukan B' (bukan 'Semua A tidak B')."
-        ]
-      },
-      {
-        heading: "2. Penalaran Analitis & Numerik Praktis",
-        paragraphs: [
-          "Soal analitis biasanya berupa urutan jadwal, peringkat, atau syarat seleksi. Jangan hanya membayangkan di kepala—gunakan kertas buram untuk menulis simbol singkat (misal A < B < C) lalu coret opsi yang melanggar syarat.",
-          "Untuk numerik praktis, soal ProASN umumnya tidak menuntut rumus rumit, melainkan ketelitian membaca persentase, rata-rata gabungan, perbandingan, dan pola deret aritmetika/geometri bertingkat."
-        ]
-      },
-      {
-        heading: "3. Kecerdasan Emosional (EQ) & Ketahanan Kerja",
-        paragraphs: [
-          "Bagian psikologi/EQ mengukur bagaimana kamu mengelola stres, menerima kritik, dan menghadapi situasi darurat menjelang tenggat waktu. Skor tertinggi selalu dimiliki oleh respons yang tenang, objektif, terbuka pada masukan, dan langsung mengeksekusi solusi alternatif."
+          "Integritas: Mengingatkan rekan secara persuasif, menolak gratifikasi/manipulasi data.",
+          "Kerja Sama & Komunikasi: Proaktif membantu lintas unit, menyederhanakan informasi kompleks, active listening.",
+          "Orientasi Hasil & Pelayanan Publik: Melampaui standar minimal, ramah sesuai SOP, anti-silo.",
+          "Pengembangan & Perubahan: Coaching rekan/mitra, adaptif sistem baru, keputusan berbasis data.",
+          "Perekat Bangsa (Sosial Kultural): Netralitas ASN, inklusif pada disabilitas/keberagaman, mediator konflik yang adil."
         ]
       }
     ],
     bpsExamples: [
-      "Berpikir Kritis di BPS: Jika data triwulanan menunjukkan pengangguran di satu kecamatan turun 50% secara tiba-tiba tanpa ada pembukaan industri, Statistisi kritis akan mengecek kesalahan entri, bias sampel, atau perubahan definisi terlebih dahulu sebelum rilis.",
-      "Problem Solving di BPS: Jika listrik kantor padam 1 jam sebelum deadline pengiriman tabulasi provinsi, manfaatkan baterai laptop + tethering ponsel untuk upload sambil mengabari ketua tim."
+      "Menolak permintaan bocoran angka BRS (embargo), membimbing mitra baru terkait kode KBLI/FASIH, dan menjelaskan perbedaan data kemiskinan ke Pemda dengan bahasa sederhana."
     ],
     aroundExamples: [
-      "Dalam rapat kerja: Ketika atasan mengkritik paparanmu dengan nada tegas di depan peserta lain, respons ber-EQ tinggi adalah mendengarkan tenang, mencatat poin perbaikan, dan berterima kasih atas masukannya.",
-      "Dalam kehidupan sehari-hari: Saat membaca berita viral, cek sumber dan datanya dulu sebelum menyimpulkan—itulah bentuk penalaran kritis yang sama dengan tes potensi."
+      "Menolak penggenapan nota ATK, menyesuaikan jadwal rapat agar tidak bentrok dengan waktu ibadah, dan menjadi penengah objektif saat terjadi gesekan di tim."
     ],
     doDont: {
-      do: "Gunakan teknik eliminasi opsi pada soal analitis; jika buntu lebih dari 90 detik, tandai ragu-ragu dan lanjut dulu.",
-      dont: "Jangan menebak silogisme berdasarkan 'perasaan umum'—selalu patuh 100% pada logika premis."
+      do: "Baca kalimat terakhir soal dulu untuk tahu kompetensi apa yang sedang diuji, lalu pilih opsi paling solutif di Level 2.",
+      dont: "Jangan memilih opsi yang apatis ('bukan tugas saya'), konfrontatif kasar di depan umum, atau melanggar SOP demi menyenangkan orang."
     }
   },
   {
     id: "mod-4",
-    category: "Literasi Digital",
-    badge: "Modul 4 • Smart ASN",
-    title: "Literasi Digital ASN: Keamanan Siber, Etika & Teknologi Lanjutan",
-    summary: "Menguasai 4 Pilar Literasi Digital, proteksi data pribadi (UU PDP & UU Statistik), anti-phishing, hingga konsep Big Data, AI, dan Cloud.",
+    category: "03. Literasi Digital (48 Soal)",
+    badge: "Modul 4 • 4 Subtes • 24 Menit",
+    title: "Literasi Digital: 4 Pilar Kementerian Komdigi (48 Soal / 24 Menit)",
+    summary: "4 Subtes sesuai 4 Pilar Literasi Digital Komdigi (Skills, Culture, Ethics, Safety). Rata-rata 30 detik/soal, target JPM ≥ 90% (Optimal).",
     quickSummary: [
-      "4 Pilar: Digital Skills (cakap aplikasi), Digital Culture (Pancasila/anti-hoaks), Digital Ethics (etika medsos/netralitas), Digital Safety (MFA, anti-phishing, VPN).",
-      "Kerahasiaan Data: DILARANG mengirim mikrodata lewat grup WA, link publik, atau menginput data individu responden ke AI publik.",
-      "Advance: 5V Big Data (Volume, Velocity, Variety, Veracity=kualitas, Value) & 3-2-1 Backup Rule."
+      "4 Subtes = 4 Pilar Komdigi: (1) Digital Skills, (2) Digital Culture, (3) Digital Ethics, (4) Digital Safety. Total 48 soal / 24 menit (30 detik/soal).",
+      "Digital Safety: Zero-Trust pada phishing/OTP/.apk, wajib MFA/2FA, kunci layar, VPN di Wi-Fi publik, 3-2-1 Backup.",
+      "UU PDP & AI: Dilarang memasukkan data pribadi/mikrodata responden ke AI publik atau mengirim lewat grup WA."
     ],
     fullContent: [
       {
-        heading: "1. Empat Pilar Literasi Digital & Keamanan Siber Dasar",
+        heading: "1. Bedah 4 Subtes (4 Pilar Literasi Digital Komdigi)",
         paragraphs: [
-          "Transformasi birokrasi menuju Smart Governance menuntut setiap ASN memahami 4 pilar literasi digital: Digital Skills, Digital Culture, Digital Ethics, dan Digital Safety.",
-          "Pada aspek Digital Safety, ancaman paling sering menimpa ASN adalah phishing dan rekayasa sosial (social engineering)—misalnya pesan WhatsApp atau email dari domain gratisan (@gmail.com) yang mengaku dari BKN/instansi pusat dan meminta NIP, password, atau kode OTP. Prinsip mutlaknya adalah Zero-Trust: jangan klik tautan, jangan bagikan kredensial, dan selalu verifikasi ke kanal resmi (.go.id) atau bagian kepegawaian."
-        ]
-      },
-      {
-        heading: "2. Perlindungan Data Pribadi & Literasi Digital Lanjutan (Advance)",
-        paragraphs: [
-          "Sesuai UU No. 27 Tahun 2022 tentang Pelindungan Data Pribadi (UU PDP) dan UU No. 16 Tahun 1997 tentang Statistik, data individu responden bersifat rahasia dan wajib dilindungi dengan enkripsi serta kontrol akses.",
-          "Pada level lanjutan (Advance), ASN juga diuji pemahamannya tentang pemanfaatan teknologi modern:"
+          "Subtes Literasi Digital ProASN 2026 mengacu langsung pada kerangka 4 Pilar Literasi Digital Kementerian Komunikasi dan Digital (Komdigi), yaitu:"
         ],
         points: [
-          "Big Data (5V): Volume (ukuran besar), Velocity (kecepatan tinggi), Variety (beragam format), Veracity (keandalan/kualitas data dari bias/noise), dan Value (nilai manfaat kebijakan).",
-          "Artificial Intelligence (AI): Boleh digunakan untuk efisiensi kerja (misal merapikan narasi atau brainstorming skrip), tetapi dilarang keras memasukkan data pribadi responden atau dokumen rahasia negara ke layanan AI publik.",
-          "Cloud & 3-2-1 Backup Rule: Simpan 3 salinan data, pada 2 jenis media berbeda, dengan 1 salinan tersimpan di lokasi terpisah (offsite/cloud) untuk mencegah kehilangan data akibat kerusakan perangkat atau ransomware."
+          "Subtes 1 — Digital Skills: Kecakapan mengoperasikan perangkat, aplikasi perkantoran, kolaborasi cloud (Track Changes/Suggesting), format machine-readable (CSV/JSON), serta konsep Big Data (5V) & AI.",
+          "Subtes 2 — Digital Culture: Pengamalan nilai Pancasila dan Bhinneka Tunggal Ika di ruang digital, toleransi, anti-hoaks, dan bangga produk/budaya lokal.",
+          "Subtes 3 — Digital Ethics: Etika komunikasi di grup kerja/email dinas, netralitas ASN di media sosial (hati-hati like/share konten politik), hak cipta/lisensi Creative Commons, dan verifikasi halusinasi AI.",
+          "Subtes 4 — Digital Safety: Proteksi akun (MFA/2FA, passphrase), mengenali phishing/malware (.apk/.exe), keamanan jaringan (tethering/VPN), TTE BSrE BSSN, serta kepatuhan UU PDP (UU No. 27/2022)."
         ]
       }
     ],
     bpsExamples: [
-      "Mikrodata BPS: Jika rekan meminta file Excel berisi nama/NIK/pendapatan responden lewat grup WhatsApp, tolak secara sopan dan arahkan melalui repositori resmi BPS yang terenkripsi.",
-      "AI untuk Statistisi: Kamu boleh meminta bantuan AI untuk memperbaiki tata bahasa ringkasan eksekutif menggunakan angka agregat yang sudah rilis publik, tetapi JANGAN pernah mengunggah raw data rumah tangga/perusahaan ke chatbot publik."
+      "Kerahasiaan Mikrodata (UU Statistik & UU PDP): Jangan pernah mengunggah data individu responden ke chatbot AI gratis atau mengirim file mentah lewat grup WhatsApp."
     ],
     aroundExamples: [
-      "Saat dinas luar di kafe/bandara: Hindari mengakses akun SSO/MyASN atau server kantor lewat Wi-Fi gratis tanpa VPN; gunakan tethering pribadi dari HP.",
-      "Di media sosial pribadi: Jaga jejak digital dan netralitas ASN—hindari memberi like, komentar, atau share konten dukungan politik praktis maupun informasi yang belum terverifikasi."
+      "Saat menerima pesan mengaku admin BKN meminta NIP & password MyASN: langsung abaikan, jangan klik tautan, dan cek ke portal resmi (.go.id) atau bagian kepegawaian."
     ],
     doDont: {
-      do: "Aktifkan MFA/2FA di semua akun dinas, gunakan mode Suggesting/Track Changes saat kolaborasi dokumen cloud, dan verifikasi setiap pesan mencurigakan.",
-      dont: "Jangan pernah membagikan OTP/password kepada siapa pun, bahkan jika pengirim mengaku sebagai atasan atau admin pusat."
+      do: "Ingat prinsip 30 detik/soal: pahami kata kunci tiap pilar (Skills=teknis, Culture=kebangsaan, Ethics=sopan/netral, Safety=aman/privasi).",
+      dont: "Jangan terkecoh dengan alasan 'mendesak' atau 'dari atasan' pada soal rekayasa sosial/phishing."
     }
   },
   {
     id: "mod-5",
-    category: "Preferensi Karier",
-    badge: "Modul 5 • Tripatha",
-    title: "Preferensi Karier (Tripatha Karier) & Konsistensi Profil",
-    summary: "Strategi memahami tes minat karier dan motivasi kerja agar profilmu konsisten, autentik, dan selaras dengan jalur Statistisi.",
+    category: "04 & 05. Tripatha & Talent DNA",
+    badge: "Modul 5 • 258 Soal • 33 Menit",
+    title: "Tripatha Karier (Holland RIASEC) & Talent DNA (ESQ 45 Talenta)",
+    summary: "Memahami 168 soal Tripatha Karier (18 menit — RIASEC) dan 90 soal Talent DNA (15 menit — ESQ) agar profil kariermu akurat dan konsisten.",
     quickSummary: [
-      "Tidak ada jawaban mutlak benar/salah, tetapi sistem mendeteksi KONSISTENSI antar-jawaban.",
-      "Tiga jalur karier (Tripatha): Fungsional (keahlian teknis/analitis), Struktural (manajerial/kepemimpinan), dan Proyek Strategis (lintas sektor/inovasi).",
-      "Tunjukkan growth mindset, motivasi pelayanan publik (PSM), dan kesiapan kolaborasi."
+      "Tripatha Karier: 4 subtes, 168 soal dalam 18 menit (~6,4 detik/soal!). Mengacu Teori Holland (RIASEC): Realistic, Investigative, Artistic, Social, Enterprising, Conventional.",
+      "Talent DNA (ESQ): 1 subtes, 90 soal dalam 15 menit (10 detik/soal!). Memetakan 45 talenta alami dalam berpikir, merasakan, dan bertindak.",
+      "Tidak ada jawaban benar/salah! Kunci utamanya: JAWAB SPONTAN, JUJUR, dan KONSISTEN."
     ],
     fullContent: [
       {
-        heading: "1. Cara Kerja Instrumen Preferensi Karier",
+        heading: "1. Mengenal 6 Tipe Teori Holland (RIASEC) pada Tripatha Karier",
         paragraphs: [
-          "Instrumen Preferensi Karier (sering dikaitkan dengan Tripatha Karier dan Talent DNA) tidak menghitung skor benar-salah seperti tes matematika. Sebaliknya, sistem memetakan pola minat, nilai kerja, dan motivasi intrinsikmu untuk melihat jalur pengembangan karier yang paling cocok.",
-          "Hal yang sangat krusial adalah KONSISTENSI. Pertanyaan dengan makna serupa sering muncul beberapa kali dengan kalimat berbeda. Jika jawabanmu saling bertentangan (misalnya di nomor 5 memilih suka tantangan baru, tetapi di nomor 40 memilih menghindari perubahan), profilmu akan terbaca inkonsisten."
+          "Tripatha Karier ProASN 2026 mengacu pada Teori Holland (RIASEC) untuk memetakan kecenderungan minat, apresiasi, dan keahlianmu terhadap jenis pekerjaan:"
+        ],
+        points: [
+          "R — Realistic (Praktis/Teknis): Suka bekerja dengan alat, lapangan, data fisik, atau hal konkret yang hasilnya langsung terlihat.",
+          "I — Investigative (Analitis/Ilmiah): Suka meneliti, menganalisis data, memecahkan masalah kompleks, dan memahami pola/metodologi. (Sangat kuat pada Statistisi!)",
+          "A — Artistic (Kreatif/Inovatif): Suka merancang visualisasi, infografis, desain komunikasi, atau ide-ide orisinal yang tidak kaku.",
+          "S — Social (Sosial/Pelayanan): Suka membantu, melatih (coaching), berkomunikasi, dan melayani masyarakat/rekan kerja.",
+          "E — Enterprising (Kepemimpinan/Persuasif): Suka memimpin proyek, memengaruhi orang, mengambil keputusan strategis, dan menggerakkan tim.",
+          "C — Conventional (Terstruktur/Teratur): Suka ketelitian, keteraturan data, SOP, verifikasi, dan pengelolaan sistem administrasi/basis data. (Juga sangat kuat pada Statistisi!)"
         ]
       },
       {
-        heading: "2. Menyelaraskan Profil Statistisi Ahli Pertama",
+        heading: "2. Mengenal Talent DNA (ESQ — 45 Talenta)",
         paragraphs: [
-          "Sebagai Statistisi Ahli Pertama, kekuatan utamamu berada pada kombinasi keahlian teknis-analitis (metodologi, pengolahan data, ketelitian) dengan kemampuan kolaborasi tim kerja (squad). Profil yang sehat menunjukkan:"
-        ],
-        points: [
-          "Public Service Motivation (PSM): Termotivasi karena data yang akurat bermanfaat bagi pengambilan kebijakan dan masyarakat.",
-          "Learning Agility (Kelincahan Belajar): Antusias mempelajari metode baru (R/Python, CAPI, Big Data) dan menerapkan pola belajar 10-20-70 (formal, mentoring, praktik).",
-          "Mobilitas Talenta: Terbuka terhadap penugasan lintas unit atau proyek strategis nasional tanpa terjebak zona nyaman."
+          "Talent DNA dikembangkan oleh ESQ untuk memotret 45 talenta alami individu dalam tiga dimensi: cara berpikir (Head/Drive), cara merasakan/berelasi (Heart/Network), dan cara bertindak/mengeksekusi (Hand/Action). Karena waktunya hanya 15 menit untuk 90 soal (10 detik/soal), sistem memang ingin menangkap respons alami pertamamu, bukan jawaban yang dibuat-buat."
         ]
       }
     ],
     bpsExamples: [
-      "Ketika ditanya mengenai penugasan proyek besar seperti Sensus Ekonomi 2026 atau tim lintas fungsi BPS, tunjukkan sikap antusias untuk berkontribusi dan memperluas wawasan.",
-      "Dalam dilema 'cepat tapi asal' vs 'akurat dan disiplin waktu', Statistisi profesional selalu memilih menjaga integritas & akurasi data dengan manajemen waktu yang disiplin."
+      "Profil Statistisi Ahli Pertama umumnya memiliki kombinasi kuat di I (Investigative — analisis & metodologi) dan C (Conventional — ketelitian & standar data), ditambah S (Social) atau A (Artistic) jika suka pelayanan PST/visualisasi data."
     ],
     aroundExamples: [
-      "Di dunia kerja modern, ASN yang terus belajar secara mandiri (kursus daring, diskusi mentor, praktik langsung) jauh lebih siap menghadapi transformasi digital dibanding yang hanya menunggu jadwal diklat formal."
+      "Karena waktu Tripatha hanya 6 detik/soal, baca pernyataan dengan cepat dan langsung klik pilihan yang paling menggambarkan dirimu. Jangan menoleh ke belakang!"
     ],
     doDont: {
-      do: "Jawab jujur sesuai karakter terbaikmu sebagai profesional yang adaptif, kolaboratif, dan haus belajar.",
-      dont: "Jangan menjawab asal-asalan atau berubah-ubah arah di tengah tes hanya karena lelah membaca."
+      do: "Jawab dengan ritme cepat, jujur, dan konsisten sesuai minat aslimu agar hasil pemetaan tepat sasaran (right man on the right track).",
+      dont: "Jangan mencoba 'mengarang' kepribadian palsu karena 168 + 90 soal akan mendeteksi inkonsistensi dan membuatmu kehabisan waktu."
+    }
+  },
+  {
+    id: "mod-6",
+    category: "Tata Tertib & Alur",
+    badge: "Modul 6 • Wajib Baca H-1",
+    title: "Tata Tertib Resmi, Alur 9 Langkah & FAQ Peserta ProASN 2026",
+    summary: "Ringkasan lengkap Tata Tertib dan FAQ resmi Pusat Penilaian Kompetensi ASN-BKN agar tidak terkena sanksi atau kendala di hari pelaksanaan.",
+    quickSummary: [
+      "Hadir registrasi paling lambat 60 menit sebelum tes (toleransi keterlambatan maks 15 menit; lewat = TIDAK DIPERKENANKAN ikut tes!).",
+      "Wajib bawa: Kartu Peserta (DICETAK/PRINT) + Kartu Identitas asli (KTP/SIM/Karpeg). Tidak bawa = tidak boleh ikut tes.",
+      "Semua barang (HP, dompet, tas, kalkulator, makanan/minuman) masuk loker. Yang boleh dibawa ke ruang tes hanya: Kartu Peserta, kacamata, obat pribadi (pompa ASI boleh dgn izin).",
+      "Program ASRI: Bawa keluar kertas coretan & buang di drop point sampah; bawa botol/tempat makan pribadi; diimbau tidak membawa kendaraan pribadi."
+    ],
+    fullContent: [
+      {
+        heading: "Alur 9 Langkah Peserta di Lokasi Ujian",
+        points: [
+          "1. Peserta tiba sesuai jadwal (diimbau tidak membawa kendaraan pribadi karena keterbatasan parkir).",
+          "2. Registrasi & verifikasi identitas (tunjukkan Kartu Peserta cetak + KTP/Karpeg).",
+          "3. Menyimpan seluruh barang pribadi di loker (kecuali Kartu Peserta, kacamata, obat pribadi).",
+          "4. Masuk ruang tunggu steril dan menunggu panggilan.",
+          "5. Masuk ruang tes dan duduk sesuai arahan petugas.",
+          "6. Login dengan PIN sesi/OTP dan mengerjakan seluruh 5 aspek tes sampai selesai.",
+          "7. Selesai tes: hasil langsung muncul di layar, tunggu arahan pengawas.",
+          "8. Keluar ruang ujian dengan tertib (bawa keluar kertas coretan ke drop point sampah).",
+          "9. Mengisi Survey Kepuasan sebagai bagian evaluasi layanan."
+        ]
+      }
+    ],
+    bpsExamples: [
+      "Khusus Undangan BPS Prov. Sumut (Rabu, 9 Des 2026 di Kanreg VI BKN Medan): Pakai Baju Sensus Ekonomi (SE) Oranye, celana/rok hitam, jilbab hitam (jika mengenakan), dan sepatu."
+    ],
+    aroundExamples: [
+      "Jika sakit di tengah pengerjaan: segera hubungi petugas kesehatan/tim poli. Jika tes ditunda atas rekomendasi tim poli, pengerjaan dapat dilanjutkan menggunakan PIN pada sesi yang sama."
+    ],
+    doDont: {
+      do: "Cetak Kartu Peserta dari jauh hari, bawa jaket (ruang CAT biasanya dingin), dan pastikan sarapan cukup untuk stamina 3 jam.",
+      dont: "Dilarang keras memotret layar/ruang tes, berbicara dengan peserta lain, atau keluar ruang tes tanpa izin petugas."
     }
   }
 ];
 
 window.PROASN_FLASHCARDS = [
-  { front: "Standar Level Mansoskul untuk Ahli Pertama?", back: "Level 2 (PermenPANRB No. 38/2017): Proaktif, mampu mengingatkan rekan secara persuasif, koordinasi lintas tim, coaching/membimbing, dan mencari metode kerja lebih efektif." },
-  { front: "Apa bedanya perilaku Level 1 vs Level 2 di soal SJT?", back: "Level 1 = pasif/melaksanakan sendiri sesuai perintah. Level 2 = aktif memberi solusi teknis, mengajak/mengingatkan rekan, dan berkoordinasi dengan atasan/lintas unit." },
-  { front: "8 Kompetensi Manajerial ASN?", back: "1. Integritas, 2. Kerja Sama, 3. Komunikasi, 4. Orientasi Hasil, 5. Pelayanan Publik, 6. Pengembangan Diri & Orang Lain, 7. Mengelola Perubahan, 8. Pengambilan Keputusan." },
-  { front: "1 Kompetensi Sosial Kultural ASN?", back: "Perekat Bangsa: menghargai keberagaman SARA, menjaga netralitas ASN, dan mampu menjadi mediator objektif dalam konflik." },
-  { front: "4 Pilar Literasi Digital Nasional?", back: "1. Digital Skills (kecakapan), 2. Digital Culture (budaya/Pancasila), 3. Digital Ethics (etika/netralitas), 4. Digital Safety (keamanan data & siber)." },
-  { front: "Apa itu 5V dalam Big Data?", back: "Volume (ukuran), Velocity (kecepatan), Variety (ragam format), Veracity (kebenaran/kualitas data), dan Value (nilai manfaat)." },
-  { front: "Apa itu 3-2-1 Backup Rule?", back: "Simpan 3 salinan data, pada 2 jenis media penyimpanan berbeda, dengan 1 salinan di lokasi terpisah (offsite/cloud)." },
-  { front: "Kaidah Modus Tollens di Silogisme?", back: "Jika P → Q, dan kenyataannya tidak Q (~Q), maka kesimpulan pasti: tidak P (~P)." },
-  { front: "Negasi dari 'Semua A adalah B'?", back: "'Ada / Sebagian / Beberapa A yang BUKAN B' (bukan 'Semua A tidak B')." },
-  { front: "Aturan Emas AI Publik & Mikrodata BPS?", back: "DILARANG memasukkan data pribadi/mikrodata responden (nama, NIK, pendapatan individu) ke AI publik. Hanya gunakan data agregat publik atau anonim (UU PDP & UU Statistik)." },
-  { front: "Mengapa MFA/2FA penting untuk akun MyASN/SSO?", back: "Memberi lapisan keamanan kedua (OTP/autentikator) sehingga akun tetap aman meskipun kata sandi bocor." },
-  { front: "Apa yang paling dinilai pada Preferensi Karier?", back: "Konsistensi jawaban, keselarasan dengan jalur karier (Fungsional/Struktural/Proyek), motivasi pelayanan publik (PSM), dan kelincahan belajar (learning agility)." }
+  { front: "Total Soal & Durasi Resmi ProASN 2026?", back: "531 Soal dalam 152 menit (~2,5 jam) dari alokasi sesi 180 menit, terbagi dalam 5 aspek: Potensi (270), Mansoskul (45), Literasi Digital (48), Tripatha Karier (168), Talent DNA (90)." },
+  { front: "Apa yang terjadi jika waktu 1 subtes habis di CAT ProASN?", back: "Sistem OTOMATIS berpindah ke subtes berikutnya dan soal yang belum diisi bernilai 0! Jadi pastikan semua soal terisi sebelum timer habis." },
+  { front: "Ambang Batas Kategori JPM (PerBKN No. 26/2019)?", back: "Optimal: JPM ≥ 90% | Cukup Optimal: 78% ≤ JPM < 90% | Kurang Optimal: JPM < 78%." },
+  { front: "Apa kepanjangan RIASEC pada Tripatha Karier (Teori Holland)?", back: "R = Realistic, I = Investigative, A = Artistic, S = Social, E = Enterprising, C = Conventional. (Statistisi biasanya kuat di I & C)." },
+  { front: "Berapa soal & waktu untuk Talent DNA (ESQ)?", back: "1 subtes, 90 soal, 15 menit (10 detik/soal) untuk memetakan 45 Talenta alami (berpikir, merasakan, bertindak)." },
+  { front: "Berapa soal & waktu untuk Potensi?", back: "5 subtes, 270 soal, 56 menit (~12,4 detik/soal). Acuan: PermenPANRB No. 3/2020. Output: Rendah / Menengah / Tinggi." },
+  { front: "Berapa soal & waktu untuk Mansoskul & Literasi Digital?", back: "Mansoskul: 2 subtes, 45 soal, 39 menit (~52 dtk/soal). Literasi Digital: 4 subtes (4 Pilar Komdigi), 48 soal, 24 menit (30 dtk/soal)." },
+  { front: "Apa saja 4 Pilar Literasi Digital Kementerian Komdigi?", back: "1. Digital Skills, 2. Digital Culture, 3. Digital Ethics, 4. Digital Safety." },
+  { front: "Berapa lama masa berlaku hasil ProASN?", back: "Berlaku selama 3 (tiga) tahun dan terintegrasi langsung ke SIASN / MyASN & Sistem Manajemen Talenta BKN." },
+  { front: "Batas toleransi keterlambatan & barang yang boleh masuk ruang tes?", back: "Toleransi terlambat maks 15 menit (hadir registrasi 60 mnt sebelumnya). Yang boleh masuk ruang tes HANYA: Kartu Peserta cetak, kacamata, dan obat pribadi (dompet & HP wajib masuk loker)." },
+  { front: "Standar Level Mansoskul untuk Ahli Pertama?", back: "Level 2 (PermenPANRB No. 38/2017): Proaktif, mengingatkan rekan persuasif, koordinasi lintas unit, coaching, dan solutif berbasis SOP/data." },
+  { front: "Apakah ProASN mengukur jabatan saat ini atau jabatan target?", back: "Mengukur kompetensi pada JABATAN YANG SEDANG DIDUDUKI SAAT INI (bukan jabatan target), sebagai bahan pertimbangan Manajemen Talenta." }
 ];
