@@ -86,9 +86,10 @@ const state = {
   practiceMode: "study" // "study" | "exam"
 };
 
-// Ephemeral state for Practice Exam Mode & Flashcards
+// Ephemeral state for Practice Exam Mode, Pagination & Flashcards
 let practiceExamAnswers = {};
 let practiceExamGraded = false;
+let practiceVisibleCount = 20;
 let fcIndex = 0;
 let fcFlipped = false;
 
@@ -141,6 +142,12 @@ function resetProgress() {
 
 // ==================== NAVIGATION ====================
 function navigateTo(tabId) {
+  // Guard against accidental tab switch while CAT exam is active
+  const catActive = !document.getElementById("tryoutActive")?.classList.contains("hidden");
+  if (catActive && tabId !== "tryout") {
+    if (!confirm("Simulasi CAT sedang berlangsung! Yakin ingin pindah halaman? (Timer tetap berjalan)")) return;
+  }
+
   document.querySelectorAll(".tab-section").forEach(sec => sec.classList.remove("active"));
   const target = document.getElementById(`tab-${tabId}`);
   if (target) target.classList.add("active");
@@ -504,12 +511,14 @@ function renderPracticeFilters() {
 
 function setPracticePack(pack) {
   state.practicePack = pack;
+  practiceVisibleCount = 20;
   renderPracticeFilters();
   renderPracticeList();
 }
 
 function setPracticeFilter(cat) {
   state.practiceFilter = cat;
+  practiceVisibleCount = 20;
   renderPracticeFilters();
   renderPracticeList();
 }
@@ -571,14 +580,15 @@ function renderPracticeList() {
     }
   }
 
-  summaryEl.textContent = `Menampilkan ${list.length} dari ${window.PROASN_QUESTIONS.length} soal terkurasi`;
+  const shown = list.slice(0, practiceVisibleCount);
+  summaryEl.textContent = `Menampilkan ${shown.length} dari ${list.length} soal cocok (Total Bank: ${window.PROASN_QUESTIONS.length} soal)`;
 
   if (list.length === 0) {
     container.innerHTML = `<div class="info-card" style="text-align:center; padding:32px;"><p class="muted">Tidak ada soal yang cocok dengan filter/pencarian saat ini.</p></div>`;
     return;
   }
 
-  container.innerHTML = list.map((q, listIdx) => {
+  const cardsHtml = shown.map((q, listIdx) => {
     const userAns = ansSource[q.id];
     const hasAnswered = userAns !== undefined;
     const showFeedback = isExam ? practiceExamGraded : hasAnswered;
@@ -624,6 +634,21 @@ function renderPracticeList() {
       </div>
     `;
   }).join("");
+
+  const remaining = list.length - shown.length;
+  const loadMoreHtml = remaining > 0 ? `
+    <div class="load-more-bar">
+      <button class="btn btn-primary btn-sm" onclick="loadMorePractice(20)">Tampilkan 20 Soal Berikutnya (${remaining} tersisa)</button>
+      <button class="btn btn-ghost btn-sm" style="border-color:var(--border);" onclick="loadMorePractice(${list.length})">Tampilkan Semua (${list.length})</button>
+    </div>
+  ` : "";
+
+  container.innerHTML = cardsHtml + loadMoreHtml;
+}
+
+function loadMorePractice(addCount) {
+  practiceVisibleCount += addCount;
+  renderPracticeList();
 }
 
 function answerPractice(qId, optIdx) {
@@ -1399,4 +1424,31 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateCountdown, 30000);
   renderAll();
   initHorizontalDragScroll();
+
+  // Scroll-to-Top floating button visibility
+  const scrollBtn = document.getElementById("scrollTopBtn");
+  window.addEventListener("scroll", () => {
+    if (!scrollBtn) return;
+    scrollBtn.classList.toggle("hidden", window.scrollY < 320);
+  }, { passive: true });
+
+  // Keyboard shortcuts during active CAT exam (Desktop)
+  document.addEventListener("keydown", e => {
+    const catActive = !document.getElementById("tryoutActive")?.classList.contains("hidden");
+    if (!catActive || !catSession) return;
+    const tag = (e.target?.tagName || "").toLowerCase();
+    if (tag === "textarea" || tag === "input") return;
+
+    const q = catSession.questions[catSession.currentIndex];
+    if (!q) return;
+
+    const key = e.key.toLowerCase();
+    if (key === "a" || key === "1") selectCatOption(q.id, 0);
+    else if (key === "b" || key === "2") selectCatOption(q.id, 1);
+    else if (key === "c" || key === "3") selectCatOption(q.id, 2);
+    else if (key === "d" || key === "4") selectCatOption(q.id, 3);
+    else if (e.key === "ArrowRight") catNext();
+    else if (e.key === "ArrowLeft") catPrev();
+    else if (key === "r") catToggleFlag();
+  });
 });

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css?v=6" />
 </head>
 <body>
   <!-- Top Header -->
@@ -315,6 +315,7 @@
               <button class="btn btn-warning-outline" id="catFlagBtn" onclick="catToggleFlag()">🚩 Ragu-ragu</button>
               <button class="btn btn-primary" id="catNextBtn" onclick="catNext()">Selanjutnya →</button>
             </div>
+            <div class="cat-kbd-hint">⌨️ Shortcut laptop: <code>A</code> <code>B</code> <code>C</code> <code>D</code> pilih jawaban • <code>←</code> <code>→</code> pindah soal • <code>R</code> ragu-ragu</div>
           </div>
 
           <aside class="cat-sidebar">
@@ -356,6 +357,9 @@
     </section>
   </main>
 
+  <!-- Scroll to Top Floating Button -->
+  <button id="scrollTopBtn" class="scroll-top-btn hidden" onclick="window.scrollTo({top:0, behavior:'smooth'})" title="Kembali ke Atas" aria-label="Kembali ke Atas">↑</button>
+
   <!-- Mobile Bottom Navigation -->
   <nav class="mobile-bottom-nav" aria-label="Navigasi Mobile">
     <button class="m-nav-btn active" data-tab="home" onclick="navigateTo('home')">
@@ -390,6 +394,6 @@
   <script src="data/questions_hots_potensi.js"></script>
   <script src="data/questions_hots_mansoskul_dig.js"></script>
   <script src="data/tips.js"></script>
-  <script src="app.js?v=11"></script>
+  <script src="app.js?v=12"></script>
 </body>
 </html>
