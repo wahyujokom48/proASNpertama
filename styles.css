@@ -1300,3 +1300,59 @@ body {
   border-radius: 10px;
   font-size: 13px;
 }
+
+/* ID Hint, CAT Pace & Scratchpad */
+.id-hint-box {
+  margin-top: 10px;
+  padding: 10px 13px;
+  background: var(--surface-alt);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 10px 10px 0;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.id-hint-box code {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1px 5px;
+  border-radius: 5px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.cat-pace-hint {
+  font-size: 11.5px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.scratchpad-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px;
+  margin-bottom: 14px;
+}
+
+.scratchpad-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.scratchpad-box textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  background: var(--surface-alt);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13.5px;
+  resize: vertical;
+}

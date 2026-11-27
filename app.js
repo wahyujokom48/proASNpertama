@@ -8,7 +8,6 @@ function initQuestionBank() {
   const packs3to10 = (window.PROASN_QUESTIONS_PACKS || []).map(q => ({ ...q, scope: "bkn" }));
   const bknGeneral = window.PROASN_QUESTIONS_BKN_GENERAL || [];
 
-  // Khusus BPS (Paket 1 & 2 @ 50 soal)
   const bpsAll = [...base, ...extra];
   const cats = ["Manajerial", "Sosial Kultural", "Potensi", "Literasi Digital", "Preferensi Karier"];
   let cursor = 0;
@@ -22,7 +21,53 @@ function initQuestionBank() {
     });
   });
 
-  window.PROASN_QUESTIONS = [...bknGeneral, ...packs3to10, ...bpsAll];
+  // Add sample Tripatha RIASEC (30) & Talent DNA ESQ (18) to Bank Soal (BKN General) so all 5 Official Aspects are browsable
+  const likertOpts = ["A. Sangat Sesuai", "B. Sesuai", "C. Kurang Sesuai", "D. Tidak Sesuai"];
+  const riasecBank = (window.PROASN_RIASEC_ITEMS || []).map((item, idx) => ({
+    id: 701 + idx,
+    pack: idx < 15 ? 11 : 12,
+    scope: "bkn",
+    tier: 1,
+    tierLabel: "Tier 1 • BKN General (RIASEC)",
+    category: "04. Tripatha Karier (RIASEC)",
+    subtopic: `Tipe ${item.riasec} (Teori Holland)`,
+    isPreference: true,
+    question: item.text,
+    options: likertOpts,
+    answer: 0,
+    explanation: `Instrumen Tripatha Karier (Teori Holland RIASEC — Tipe ${item.riasec}). Tidak ada jawaban benar/salah; jawab spontan dan konsisten sesuai minat aslimu.`
+  }));
+
+  const dnaBank = (window.PROASN_TALENT_DNA_ITEMS || []).map((item, idx) => ({
+    id: 751 + idx,
+    pack: idx < 9 ? 11 : 12,
+    scope: "bkn",
+    tier: 1,
+    tierLabel: "Tier 1 • BKN General (Talent DNA)",
+    category: "05. Talent DNA (ESQ)",
+    subtopic: `${item.dim} • ${item.talent}`,
+    isPreference: true,
+    question: item.text,
+    options: likertOpts,
+    answer: 0,
+    explanation: `Instrumen Talent DNA ESQ (Talenta ${item.talent} — Dimensi ${item.dim}). Tidak ada jawaban benar/salah; jawab jujur sesuai kekuatan alamu.`
+  }));
+
+  // Normalize all categories to the exact 5 Official ProASN 2026 Aspects
+  const normalizeCat = q => {
+    if (q.category === "Potensi") q.category = "01. Potensi";
+    else if (q.category === "Manajerial" || q.category === "Sosial Kultural") q.category = "02. Mansoskul";
+    else if (q.category === "Literasi Digital") q.category = "03. Literasi Digital";
+    else if (q.category === "Preferensi Karier") q.category = "04. Tripatha Karier (RIASEC)";
+    return q;
+  };
+
+  const hotsPotensi = window.PROASN_QUESTIONS_HOTS_POTENSI || [];
+  const hotsMD = window.PROASN_QUESTIONS_HOTS_MD || [];
+
+  window.PROASN_QUESTIONS = [...hotsPotensi, ...hotsMD, ...bknGeneral, ...packs3to10, ...bpsAll]
+    .map(normalizeCat)
+    .concat(riasecBank, dnaBank);
 }
 
 const state = {
@@ -170,7 +215,7 @@ function renderHomeStats() {
 }
 
 function getAspectStats() {
-  const cats = ["Manajerial", "Sosial Kultural", "Potensi", "Literasi Digital", "Preferensi Karier"];
+  const cats = ["01. Potensi", "02. Mansoskul", "03. Literasi Digital", "04. Tripatha Karier (RIASEC)", "05. Talent DNA (ESQ)"];
   return cats.map(cat => {
     const qs = window.PROASN_QUESTIONS.filter(q => q.category === cat);
     let answered = 0;
@@ -451,7 +496,7 @@ function renderPracticeFilters() {
 
   const filterEl = document.getElementById("practiceCategoryFilter");
   if (!filterEl) return;
-  const categories = ["Semua", "Manajerial", "Sosial Kultural", "Potensi", "Literasi Digital", "Preferensi Karier"];
+  const categories = ["Semua", "01. Potensi", "02. Mansoskul", "03. Literasi Digital", "04. Tripatha Karier (RIASEC)", "05. Talent DNA (ESQ)"];
   filterEl.innerHTML = categories.map(cat => `
     <button class="pill-btn ${state.practiceFilter === cat ? "active" : ""}" onclick="setPracticeFilter('${cat}')">${cat}</button>
   `).join("");
@@ -472,6 +517,7 @@ function setPracticeFilter(cat) {
 function getFilteredPracticeList() {
   const onlyBookmark = document.getElementById("onlyBookmarkCheck")?.checked;
   const onlyUnanswered = document.getElementById("onlyUnansweredCheck")?.checked;
+  const onlyWrong = document.getElementById("onlyWrongCheck")?.checked;
   const query = (document.getElementById("practiceSearchInput")?.value || "").trim().toLowerCase();
 
   const ansSource = state.practiceMode === "exam" ? practiceExamAnswers : state.practiceAnswers;
@@ -491,6 +537,9 @@ function getFilteredPracticeList() {
   }
   if (onlyUnanswered) {
     list = list.filter(q => ansSource[q.id] === undefined);
+  }
+  if (onlyWrong) {
+    list = list.filter(q => !q.isPreference && ansSource[q.id] !== undefined && ansSource[q.id] !== q.answer);
   }
   if (query) {
     list = list.filter(q =>
@@ -529,7 +578,7 @@ function renderPracticeList() {
     return;
   }
 
-  container.innerHTML = list.map(q => {
+  container.innerHTML = list.map((q, listIdx) => {
     const userAns = ansSource[q.id];
     const hasAnswered = userAns !== undefined;
     const showFeedback = isExam ? practiceExamGraded : hasAnswered;
@@ -539,7 +588,7 @@ function renderPracticeList() {
       <div class="question-card" id="qcard-${q.id}">
         <div class="q-meta-row">
           <div class="q-badges">
-            <span class="badge-blue">#${q.id} • ${q.category}</span>
+            <span class="badge-blue">No. ${listIdx + 1} • #${q.id} • ${q.category}</span>
             <span class="badge-orange">${q.subtopic}</span>
           </div>
           <button class="bookmark-btn ${isBookmarked ? "saved" : ""}" onclick="toggleBookmark(${q.id})">
@@ -722,44 +771,53 @@ function startTryout(count, minutes) {
 
 // ==================== SIMULASI RESMI 5-TAHAP PROASN 2026 (AUTO-NEXT TIMER) ====================
 function startOfficial5Stage(mode) {
-  const isFull = mode === "full";
+  const isExact = mode === "exact531";
   const all = window.PROASN_QUESTIONS || [];
-  const potensiPool = shuffle(all.filter(q => q.category === "Potensi")).slice(0, isFull ? 50 : 30);
-  const mansoskulPool = shuffle(all.filter(q => q.category === "Manajerial" || q.category === "Sosial Kultural")).slice(0, isFull ? 45 : 25);
-  const digitalPool = shuffle(all.filter(q => q.category === "Literasi Digital")).slice(0, isFull ? 48 : 20);
+
+  const potensiPool = isExact
+    ? (window.PROASN_OFFICIAL_POTENSI_270 || []).slice()
+    : shuffle(window.PROASN_OFFICIAL_POTENSI_270 || all.filter(q => q.category === "01. Potensi")).slice(0, 30);
+
+  const mansoskulPool = shuffle(all.filter(q => q.category === "02. Mansoskul")).slice(0, isExact ? 45 : 25);
+  const digitalPool = shuffle(all.filter(q => q.category === "03. Literasi Digital")).slice(0, isExact ? 48 : 20);
 
   const likertOpts = ["A. Sangat Sesuai", "B. Sesuai", "C. Kurang Sesuai", "D. Tidak Sesuai"];
-  const riasecPool = (window.PROASN_RIASEC_ITEMS || []).map(item => ({
-    id: item.id,
-    category: "Tripatha Karier (RIASEC)",
-    subtopic: `Tipe ${item.riasec} (Teori Holland)`,
-    riasec: item.riasec,
-    isLikert: true,
-    question: item.text,
-    options: likertOpts
-  }));
-  const dnaPool = (window.PROASN_TALENT_DNA_ITEMS || []).map(item => ({
-    id: item.id,
-    category: "Talent DNA (ESQ)",
-    subtopic: `${item.dim} • ${item.talent}`,
-    talent: item.talent,
-    dim: item.dim,
-    isLikert: true,
-    question: item.text,
-    options: likertOpts
-  }));
+  const riasecPool = isExact
+    ? (window.PROASN_OFFICIAL_RIASEC_168 || []).slice()
+    : (window.PROASN_RIASEC_ITEMS || []).map(item => ({
+        id: item.id,
+        category: "Tripatha Karier (RIASEC)",
+        subtopic: `Tipe ${item.riasec} (Teori Holland)`,
+        riasec: item.riasec,
+        isLikert: true,
+        question: item.text,
+        options: likertOpts
+      }));
+
+  const dnaPool = isExact
+    ? (window.PROASN_OFFICIAL_DNA_90 || []).slice()
+    : (window.PROASN_TALENT_DNA_ITEMS || []).map(item => ({
+        id: item.id,
+        category: "Talent DNA (ESQ)",
+        subtopic: `${item.dim} • ${item.talent}`,
+        talent: item.talent,
+        dim: item.dim,
+        isLikert: true,
+        question: item.text,
+        options: likertOpts
+      }));
 
   const stages = [
-    { name: "Tahap 1/5: Potensi", minutes: isFull ? 12 : 7, questions: potensiPool },
-    { name: "Tahap 2/5: Mansoskul (Level 2)", minutes: isFull ? 39 : 16, questions: mansoskulPool },
-    { name: "Tahap 3/5: Literasi Digital (Komdigi)", minutes: isFull ? 24 : 10, questions: digitalPool },
-    { name: "Tahap 4/5: Tripatha Karier (RIASEC)", minutes: 3, questions: riasecPool },
-    { name: "Tahap 5/5: Talent DNA (ESQ)", minutes: 3, questions: dnaPool }
+    { name: "Tahap 1/5: Potensi", minutes: isExact ? 56 : 7, questions: potensiPool },
+    { name: "Tahap 2/5: Mansoskul (Level 2)", minutes: isExact ? 39 : 16, questions: mansoskulPool },
+    { name: "Tahap 3/5: Literasi Digital (Komdigi)", minutes: isExact ? 24 : 10, questions: digitalPool },
+    { name: "Tahap 4/5: Tripatha Karier (RIASEC)", minutes: isExact ? 18 : 3, questions: riasecPool },
+    { name: "Tahap 5/5: Talent DNA (ESQ)", minutes: isExact ? 15 : 3, questions: dnaPool }
   ];
 
   catSession = {
     is5Stage: true,
-    label: isFull ? "Simulasi Resmi 5-Tahap (Full Realistis)" : "Simulasi Resmi 5-Tahap (Proporsional)",
+    label: isExact ? "Ujian Resmi ProASN 2026 (531 Soal)" : "Simulasi 5-Tahap Proporsional (123 Soal)",
     stages,
     stageIndex: 0,
     stageAnswers: [{}, {}, {}, {}, {}],
@@ -840,14 +898,49 @@ function finishOfficial5Stage() {
   const topRiasec = Object.entries(rScores).sort((x, y) => y[1] - x[1]);
   const riasecCode = topRiasec.slice(0, 3).map(x => x[0]).join(" - ");
 
-  // 5. Talent DNA (ESQ)
-  const s4 = catSession.stages[4].questions;
-  const a4 = catSession.stageAnswers[4];
-  const dnaRanked = s4.map(q => ({
-    talent: q.talent,
-    dim: q.dim,
-    score: a4[q.id] !== undefined ? (4 - a4[q.id]) : 0
-  })).sort((x, y) => y.score - x.score).slice(0, 5);
+  // Aggregate Talent DNA scores by talent name (handles 90-item 2x pass cleanly)
+  const dnaMap = {};
+  s4.forEach(q => {
+    const val = a4[q.id] !== undefined ? (4 - a4[q.id]) : 0;
+    if (!dnaMap[q.talent]) dnaMap[q.talent] = { talent: q.talent, dim: q.dim, score: 0 };
+    dnaMap[q.talent].score += val;
+  });
+  const dnaRanked = Object.values(dnaMap).sort((x, y) => y.score - x.score).slice(0, 5);
+
+  // Completion & Speed Analysis
+  const totalAll = s0.length + s1.length + s2.length + s3.length + s4.length;
+  const answeredAll = Object.keys(a0).length + Object.keys(a1).length + Object.keys(a2).length + Object.keys(a3).length + Object.keys(a4).length;
+  const unansweredAll = totalAll - answeredAll;
+
+  // Personal Recommendations Engine
+  const recs = [];
+  if (unansweredAll > 0) {
+    recs.push(`⏱️ <strong>Manajemen Waktu:</strong> Masih ada <strong>${unansweredAll} soal kosong</strong> (bernilai 0 di CAT BKN). Latih ritme cepat: Potensi ~12 dtk/soal, Tripatha ~6 dtk/soal, Talent DNA ~10 dtk/soal.`);
+  } else {
+    recs.push(`✅ <strong>Kelengkapan Sempurna:</strong> Seluruh ${totalAll} soal berhasil kamu selesaikan tanpa ada yang kosong!`);
+  }
+  if (potPct < 80) {
+    recs.push(`🧠 <strong>Tingkatkan Potensi (${potPct}% → Target Tinggi ≥80%):</strong> Perbanyak latihan Silogisme (Modus Tollens), Deret Bilangan, dan Penalaran Analitis di Bank Soal kategori Potensi.`);
+  }
+  if (mansosPct < 90) {
+    recs.push(`🏛️ <strong>Kejar JPM Optimal Mansoskul (${mansosPct}% → Target ≥90%):</strong> Pelajari kembali Modul 3 (Standar Level 2 PermenPANRB 38/2017). Pilih opsi yang proaktif, persuasif, koordinatif, dan patuh SOP.`);
+  }
+  if (digPct < 90) {
+    recs.push(`💻 <strong>Kejar JPM Optimal Literasi Digital (${digPct}% → Target ≥90%):</strong> Review Modul 4 (4 Pilar Komdigi: Skills, Culture, Ethics, Safety), terutama Zero-Trust phishing, UU PDP, dan etika AI.`);
+  }
+  if (potPct >= 80 && mansosPct >= 90 && digPct >= 90) {
+    recs.push(`🌟 <strong>Kesiapan Sangat Prima!</strong> Seluruh aspek kognitif & kompetensi sudah mencapai kategori <strong>Tinggi / Optimal (JPM ≥ 90%)</strong>. Pertahankan stamina dan konsistensi menjelang Hari-H!`);
+  }
+
+  const riasecDesc = {
+    R: "Realistic (Praktis/Lapangan)",
+    I: "Investigative (Analitis/Data)",
+    A: "Artistic (Kreatif/Visual)",
+    S: "Social (Pelayanan/Coaching)",
+    E: "Enterprising (Kepemimpinan)",
+    C: "Conventional (Terstruktur/SOP)"
+  };
+  const topRiasecMeaning = topRiasec.slice(0, 3).map(x => riasecDesc[x[0]]).join(" • ");
 
   const avgCognitive = Math.round((potPct + mansosPct + digPct) / 3);
   const nowStr = new Date().toLocaleString("id-ID", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" });
@@ -858,29 +951,30 @@ function finishOfficial5Stage() {
 
   resultEl.innerHTML = `
     <div class="hero-card" style="margin-bottom:20px;">
-      <div class="hero-pill">📊 Rapor Hasil Simulasi Resmi ProASN 2026</div>
+      <div class="hero-pill">📊 Rapor Hasil & Analisis Resmi ProASN 2026</div>
       <h1>Rata-rata Kesiapan: <span class="accent-text">${avgCognitive}%</span></h1>
-      <p class="hero-desc">Format rapor disesuaikan dengan Panduan Resmi BKN 2026 (PerBKN No. 26/2019: Optimal ≥ 90%, Cukup Optimal 78–&lt;90%, Kurang Optimal &lt; 78%).</p>
+      <p class="hero-desc">Terjawab: <strong>${answeredAll}/${totalAll} soal</strong>. Acuan PerBKN No. 26/2019: Optimal (JPM ≥ 90%), Cukup Optimal (78–&lt;90%), Kurang Optimal (&lt; 78%).</p>
       <div class="hero-actions">
         <button class="btn btn-primary" onclick="backToTryoutLobby()">Kembali ke Lobby CAT</button>
+        <button class="btn btn-secondary" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
         <button class="btn btn-ghost" onclick="navigateTo('materials')">Review Materi Resmi</button>
       </div>
     </div>
 
     <div class="stats-grid" style="margin-bottom:20px;">
       <div class="stat-card">
-        <div class="stat-label">01. Potensi</div>
+        <div class="stat-label">01. Potensi (${s0.length} Soal)</div>
         <div class="stat-value">${potCat} (${potPct}%)</div>
         <div class="progress-bar"><div class="progress-fill" style="width:${potPct}%"></div></div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">02. Mansoskul (JPM)</div>
+        <div class="stat-label">02. Mansoskul (${s1.length} Soal)</div>
         <div class="stat-value">${mansosPct}%</div>
         <div class="muted" style="font-size:12px; margin-bottom:6px;">${mansosCat}</div>
         <div class="progress-bar"><div class="progress-fill" style="width:${mansosPct}%"></div></div>
       </div>
       <div class="stat-card">
-        <div class="stat-label">03. Literasi Digital (JPM)</div>
+        <div class="stat-label">03. Literasi Digital (${s2.length} Soal)</div>
         <div class="stat-value">${digPct}%</div>
         <div class="muted" style="font-size:12px; margin-bottom:6px;">${digCat}</div>
         <div class="progress-bar"><div class="progress-fill" style="width:${digPct}%"></div></div>
@@ -890,6 +984,15 @@ function finishOfficial5Stage() {
         <div class="stat-value">${riasecCode}</div>
         <div class="muted" style="font-size:11px;">${topRiasec.map(x => `${x[0]}:${x[1]}`).join(" • ")}</div>
       </div>
+    </div>
+
+    <div class="info-card" style="margin-bottom:20px; border-left:4px solid var(--accent);">
+      <span class="badge-orange">🎯 Analisis & Rekomendasi Personal Untukmu</span>
+      <h3 style="margin:8px 0 10px;">Langkah Tindak Lanjut Sebelum Hari-H</h3>
+      <ul style="padding-left:18px; font-size:13.5px; display:flex; flex-direction:column; gap:8px;">
+        ${recs.map(r => `<li>${r}</li>`).join("")}
+        <li>🧭 <strong>Interpretasi Profil RIASEC (${riasecCode}):</strong> Kecenderungan terkuatmu adalah <em>${topRiasecMeaning}</em>.</li>
+      </ul>
     </div>
 
     <div class="info-card" style="margin-bottom:20px;">
@@ -904,7 +1007,17 @@ function finishOfficial5Stage() {
         `).join("")}
       </div>
     </div>
+
+    <div class="section-header" style="margin-top:24px;">
+      <h2>Pembahasan & Evaluasi Soal Selesai</h2>
+      <div style="display:flex; gap:8px;">
+        <button class="btn btn-primary btn-sm" onclick="renderOfficialReview(true)">❌ Hanya yang Salah</button>
+        <button class="btn btn-ghost btn-sm" style="border-color:var(--border);" onclick="renderOfficialReview(false)">📋 Semua Soal</button>
+      </div>
+    </div>
+    <div id="officialReviewStack" class="questions-stack"></div>
   `;
+  renderOfficialReview(true);
 }
 
 function startCatTimer() {
@@ -935,6 +1048,14 @@ function renderCatQuestion() {
 
   const stagePrefix = catSession.is5Stage ? `${catSession.stages[catSession.stageIndex].name} • ` : "";
   document.getElementById("catProgressText").textContent = `${stagePrefix}Soal ${catSession.currentIndex + 1} / ${total}`;
+
+  // Update Pace Hint
+  const paceEl = document.getElementById("catPaceHint");
+  if (paceEl) {
+    const remainingQ = Math.max(1, total - Object.keys(catSession.answers).length);
+    const secPerQ = Math.max(1, Math.round(catSession.remainingSec / remainingQ));
+    paceEl.textContent = `⚡ Sisa ritme ideal: ~${secPerQ} dtk/soal`;
+  }
   document.getElementById("catMetaRow").innerHTML = `
     <div class="q-badges">
       <span class="badge-blue">${q.category}</span>
@@ -1106,6 +1227,51 @@ function finishTryout() {
       }).join("")}
     </div>
   `;
+}
+
+function toggleScratchpad() {
+  document.getElementById("catScratchpad")?.classList.toggle("hidden");
+}
+
+function renderOfficialReview(onlyWrong) {
+  const container = document.getElementById("officialReviewStack");
+  if (!container || !catSession) return;
+  const reviewable = [];
+  [0, 1, 2].forEach(sIdx => {
+    const qs = catSession.stages[sIdx].questions;
+    const ans = catSession.stageAnswers[sIdx];
+    qs.forEach((q, i) => {
+      const uAns = ans[q.id];
+      const isCorrect = uAns === q.answer;
+      if (onlyWrong && isCorrect) return;
+      reviewable.push({ stage: catSession.stages[sIdx].name, num: i + 1, q, uAns, isCorrect });
+    });
+  });
+
+  if (reviewable.length === 0) {
+    container.innerHTML = `<div class="info-card" style="text-align:center;"><p class="muted">🎉 Tidak ada jawaban salah pada 3 aspek kognitif/kompetensi!</p></div>`;
+    return;
+  }
+
+  container.innerHTML = reviewable.slice(0, 100).map(item => `
+    <div class="question-card">
+      <div class="q-meta-row">
+        <div class="q-badges">
+          <span class="${item.isCorrect ? "badge-green" : "badge-orange"}">${item.isCorrect ? "✓ Benar" : "✗ Perlu Review"} • ${item.stage} #${item.num}</span>
+          <span class="badge-blue">${item.q.subtopic || item.q.category}</span>
+        </div>
+      </div>
+      <div class="q-text">${item.q.question}</div>
+      <p style="font-size:13px; margin-bottom:8px;">
+        <strong>Jawabanmu:</strong> ${item.uAns !== undefined ? item.q.options[item.uAns] : "<em>Tidak dijawab (0)</em>"}<br/>
+        <strong>Jawaban Terbaik:</strong> ${item.q.options[item.q.answer]}
+      </p>
+      <div class="explanation-box">
+        <strong>Pembahasan:</strong>
+        <div>${item.q.explanation || "Pilih opsi yang paling selaras dengan standar kompetensi Level 2 & logika premis."}</div>
+      </div>
+    </div>
+  `).join("");
 }
 
 function backToTryoutLobby() {

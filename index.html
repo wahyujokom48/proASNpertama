@@ -178,8 +178,11 @@
     <!-- TAB 3: BANK SOAL -->
     <section id="tab-practice" class="tab-section">
       <div class="page-head">
-        <h2>Bank Soal & Pembahasan (600 Soal • 2 Versi)</h2>
+        <h2>Bank Soal & Pembahasan (700+ Soal • 2 Versi)</h2>
         <p>Pilih <strong>Versi BKN General</strong> (rekomendasi utama untuk CAT BKN) atau <strong>Versi Khusus BPS</strong> (konteks Statistisi).</p>
+        <div class="id-hint-box">
+          ℹ️ <strong>Petunjuk Nomor:</strong> <code>No. 1, 2, ...</code> adalah urutan soal di paket yang sedang dibuka, sedangkan <code>#ID</code> (misal <code>#501</code>, <code>#801</code>) adalah <strong>kode unik permanen soal</strong> untuk referensi diskusi &amp; bookmark.
+        </div>
       </div>
 
       <div class="segmented-control" id="practiceScopeToggle">
@@ -212,6 +215,10 @@
             <input type="checkbox" id="onlyUnansweredCheck" onchange="renderPracticeList()" />
             <span>📝 Belum Dijawab</span>
           </label>
+          <label class="toggle-chip">
+            <input type="checkbox" id="onlyWrongCheck" onchange="renderPracticeList()" />
+            <span>❌ Hanya Soal Salah</span>
+          </label>
         </div>
       </div>
 
@@ -242,19 +249,19 @@
 
         <div class="tryout-options-grid" style="margin-bottom:24px;">
           <div class="tryout-card featured">
-            <span class="badge-orange">🔥 Paling Mirip Asli • 5 Tahap Auto-Next</span>
-            <h3>Simulasi Resmi 5-Tahap (Proporsional)</h3>
-            <p>123 soal lengkap 5 aspek (Potensi 30/7m → Mansoskul 25/16m → Lit. Digital 20/10m → Tripatha RIASEC 30/3m → Talent DNA 18/3m) + Rapor JPM, RIASEC & Talent DNA!</p>
-            <button class="btn btn-primary full-width" onclick="startOfficial5Stage('proportional')">Mulai Simulasi 5-Tahap (39 Mnt)</button>
+            <span class="badge-orange">🏆 100% Sesuai Asli BKN • 531 Soal • 152 Mnt</span>
+            <h3>Ujian Resmi ProASN 2026 (531 Soal)</h3>
+            <p>Persis seperti hari-H: <strong>Potensi 270 (56m) → Mansoskul 45 (39m) → Lit. Digital 48 (24m) → Tripatha RIASEC 168 (18m) → Talent DNA 90 (15m)</strong> + Auto-Next Timer & Rapor Analisis!</p>
+            <button class="btn btn-primary full-width" onclick="startOfficial5Stage('exact531')">Mulai Ujian Resmi 531 Soal (152 Mnt)</button>
           </div>
           <div class="tryout-card featured">
-            <span class="badge-blue">⚡ Jumlah Soal Asli Mansoskul & LitDig</span>
-            <h3>Simulasi Resmi 5-Tahap (Full Realistis)</h3>
-            <p>191 soal dengan porsi <strong>45 soal Mansoskul (39 mnt)</strong> & <strong>48 soal Literasi Digital (24 mnt)</strong> persis panduan BKN + Potensi, RIASEC & Talent DNA!</p>
-            <button class="btn btn-secondary full-width" onclick="startOfficial5Stage('full')">Mulai Simulasi Full 5-Tahap (81 Mnt)</button>
+            <span class="badge-blue">🔥 Versi Latihan Cepat • 123 Soal • 39 Mnt</span>
+            <h3>Simulasi 5-Tahap (Proporsional)</h3>
+            <p>Alur 5 tahap Auto-Next yang sama dengan versi lebih ringkas (Potensi 30/7m → Mansoskul 25/16m → LitDig 20/10m → RIASEC 30/3m → DNA 18/3m) + Rapor Analisis.</p>
+            <button class="btn btn-secondary full-width" onclick="startOfficial5Stage('proportional')">Mulai Simulasi Cepat (39 Mnt)</button>
           </div>
           <div class="tryout-card">
-            <span class="badge-green">Cepat • 15 Menit</span>
+            <span class="badge-green">⚡ Kilat • 15 Menit</span>
             <h3>Mini Tryout Acak (15 Soal)</h3>
             <p>15 soal acak gabungan untuk latihan singkat di HP saat istirahat.</p>
             <button class="btn btn-ghost full-width" style="border-color:var(--border);" onclick="startTryout(15, 15)">Mulai Mini Tryout</button>
@@ -278,9 +285,23 @@
       <!-- Active Exam -->
       <div id="tryoutActive" class="tryout-active hidden">
         <div class="cat-topbar">
-          <div class="cat-progress-text" id="catProgressText">Soal 1 / 30</div>
+          <div>
+            <div class="cat-progress-text" id="catProgressText">Soal 1 / 30</div>
+            <div class="cat-pace-hint" id="catPaceHint">⚡ Target ritme: ~35 dtk/soal</div>
+          </div>
           <div class="cat-timer" id="catTimer">35:00</div>
-          <button class="btn btn-danger-outline btn-sm" onclick="finishTryoutConfirm()">Selesai</button>
+          <div style="display:flex; gap:6px;">
+            <button class="btn btn-ghost btn-sm" style="border-color:var(--border);" onclick="toggleScratchpad()" title="Kertas Coretan Digital">📝 Coretan</button>
+            <button class="btn btn-danger-outline btn-sm" onclick="finishTryoutConfirm()">Selesai</button>
+          </div>
+        </div>
+
+        <div id="catScratchpad" class="scratchpad-box hidden">
+          <div class="scratchpad-head">
+            <span>📝 Kertas Coretan Digital (untuk urutan analitis / hitungan)</span>
+            <button class="text-btn" onclick="document.getElementById('scratchpadInput').value=''">Bersihkan</button>
+          </div>
+          <textarea id="scratchpadInput" rows="3" placeholder="Contoh: A < B < C, 40% x 250 = 100..."></textarea>
         </div>
 
         <div class="cat-layout">
@@ -365,7 +386,10 @@
   <script src="data/questions_packs.js"></script>
   <script src="data/questions_bkn_general.js"></script>
   <script src="data/questions_riasec_dna.js"></script>
+  <script src="data/official_531_bank.js"></script>
+  <script src="data/questions_hots_potensi.js"></script>
+  <script src="data/questions_hots_mansoskul_dig.js"></script>
   <script src="data/tips.js"></script>
-  <script src="app.js?v=6"></script>
+  <script src="app.js?v=9"></script>
 </body>
 </html>
